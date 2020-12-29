@@ -20,6 +20,13 @@ def getInteger (Interger):
         except ValueError:
             print('you must enter e interger')
 
+def getPercentage (times100, divisor):
+    """
+    Function to get percentages
+    """
+    percentage = (times100 * 100) / divisor
+    return percentage
+
 def dixonTest (data_set, confidence_interval):
     """
     Function to execute dixon test and automacally change the samples data
@@ -92,8 +99,24 @@ def sucrose_polarimetry (alfa, volume, tube_length, solution_concentration):
     """
     sample_sucrose_mass = (alfa * volume) / (66.5 * tube_length) ## 66.5 is a constant
     expected_sucrose_grams = (solution_concentration * volume) / 100
-    %_sucrose = (sample_sucrose_mass * 100) / expected_sucrose_grams
-    return %_sucrose
+    sucrose_percentage = getPercentage (sample_sucrose_mass, expected_sucrose_grams)
+    return sucrose_percentage
+
+def ICUMSA_colour (solution_concentration, absorbance_420nm, optical_length):
+    """
+    Function to calculate the ICUMSA colour of the sucrose
+    """
+    ICUMSA_colour = (absorbance_420nm * 1000) / ((solution_concentration / 100) * optical_length)
+    return ICUMSA_colour
+
+def fehling_reaction (fehlings_title, expended_solution, solution_percentage):
+    """
+    Function to calculate the inverted sugar
+    """
+    inverted_sugar_in_the_expended_solution = getPercentage(fehlings_title , expended_solution)
+    percentage_of_inverted_sugar = getPercentage(inverted_sugar_in_the_expended_solution, solution_percentage)
+    sucrose_percentage = (342 * percentage_of_inverted_sugar) / 360 ## 342 and 360 are constants
+
 
 
 
