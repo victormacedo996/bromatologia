@@ -93,7 +93,7 @@ def Ttest (data_set, comparable, confidence_interval):
     else:
         print('Different numbers')
 
-def sucrose_polarimetry (alfa, volume, tube_length, solution_concentration):
+def sucrosePolarimetry (alfa, volume, tube_length, solution_concentration):
     """
     Function to calculate the % of sucrose in the analysed sucrose via polarimetry
     """
@@ -102,30 +102,31 @@ def sucrose_polarimetry (alfa, volume, tube_length, solution_concentration):
     sucrose_percentage = getPercentage (sample_sucrose_mass, expected_sucrose_grams)
     return sucrose_percentage
 
-def ICUMSA_colour (solution_concentration, absorbance_420nm, optical_length):
+def icumsaClour (solution_concentration, absorbance_420nm, optical_length):
     """
     Function to calculate the ICUMSA colour of the sucrose
     """
     ICUMSA_colour = (absorbance_420nm * 1000) / ((solution_concentration / 100) * optical_length)
     return ICUMSA_colour
 
-def fehling_reaction (fehlings_title, expended_solution, solution_percentage):
+def fehlingsReaction (fehlings_title, expended_solution):
     """
-    Function to calculate the inverted sugar
+    Function to calculate inverted sugar in the expended solution
     """
     inverted_sugar_in_the_expended_solution = getPercentage(fehlings_title , expended_solution)
+    return inverted_sugar_in_the_expended_solution
+
+def sucroseInSucrose (percentage_of_inverted_sugar, solution_percentage):
     percentage_of_inverted_sugar = getPercentage(inverted_sugar_in_the_expended_solution, solution_percentage)
     sucrose_percentage = (342 * percentage_of_inverted_sugar) / 360 ## 342 and 360 are constants
+    return sucrose_percentage
 
 
+def honeyInvertedSugar (inverted_sugar_in_the_expended_solution, solution_percentage):
+    honey_inverted_sugar = getPercentage (inverted_sugar_in_the_expended_solution, solution_percentage)
+    return honey_inverted_sugar
+
+    
 
 
-
-
-
-
-
-
-
-
-
+    
