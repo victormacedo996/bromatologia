@@ -134,6 +134,23 @@ def sucroseInHoney (inverted_sugar_pre_hidrolisys, inverted_sugar_post_hidrolisy
     sucrose = inverted_sugar_from_sucrose * 0.95 ## 0.95 is a constant
     return sucrose
 
+def honeyAcidity (NaOH_volume, NaOH_molarity, NaOH_fc, honey_solution_concentration, honey_solution_volume):
+    """
+    Function to get acidity in honey - meq/kg
+    """
+    mili_eq_NaOH = NaOH_volume * NaOH_molarity * NaOH_fc
+    grams_of_honey = (honey_solution_concentration * honey_solution_volume) / 100
+    acidity = (mili_eq_NaOH * 1000) / grams_of_honey
+    return acidity
+
+def formolIndex (NaOH_volume, NaOH_molarity, NaOH_fc, grams_of_honey):
+    """
+    Function to calculate the formol index in honey
+    """
+    number_of_NaOH_mols = NaOH_volume * NaOH_molarity * NaOH_fc
+    volume = number_of_NaOH_mols / NaOH_molarity
+    formol_index = (volume * 1000) / grams_of_honey
+    return formol_index
 
 
 
