@@ -118,7 +118,7 @@ def sucroseInSucrose (fehlings_title, expended_solution, solution_percentage):
     sucrose_percentage = (342 * percentage_of_inverted_sugar) / 360 ## 342 and 360 are constants
     return sucrose_percentage
     
-def honeyInvertedSugar (fehlings_title, expended_solution, solution_percentage):
+def InvertedSugarInHoney (fehlings_title, expended_solution, solution_percentage):
     """
     Function to get the percentage of inverted sugar in honey
     """
@@ -126,7 +126,7 @@ def honeyInvertedSugar (fehlings_title, expended_solution, solution_percentage):
     percentage_of_inverted_sugar = getPercentage(inverted_sugar_in_the_expended_solution, solution_percentage)
     return percentage_of_inverted_sugar
 
-def honeySucrose (inverted_sugar_pre_hidrolisys, inverted_sugar_post_hidrolisys):
+def sucroseInHoney (inverted_sugar_pre_hidrolisys, inverted_sugar_post_hidrolisys):
     """
     Function to calculate the sucrose percentage in honey
     """
