@@ -1,4 +1,7 @@
 def getFloat (Float):
+    """
+    Float input verification
+    """
     while True:
         try:
             user_input = float(input(Float))
@@ -7,6 +10,9 @@ def getFloat (Float):
             print('Use only numbers and separete decimals with point')
 
 def getInteger (Interger):
+    """
+    Integer input verification
+    """
     while True:
         try:
             user_input = int(input(Interger))
@@ -15,6 +21,9 @@ def getInteger (Interger):
             print('you must enter e interger')
 
 def dixonTest (data_set, confidence_interval):
+    """
+    Function to execute dixon test and automacally change the samples data
+    """
     dixon_table = {0.9: {3: 0.941, 
                     4: 0.765,
                     5: 0.642,
@@ -45,9 +54,11 @@ def dixonTest (data_set, confidence_interval):
             }
     data_set.sort()
 
+    ## Dixon's test equation
     Qmax = abs((data_set[-1] - data_set[-2]) / (data_set[-1] - data_set[0]))
     Qmin = abs((data_set[0] - data_set[1]) / (data_set[-1] - data_set[0]))
 
+    ## Modifying the data
     if Qmax > dixon_table[confidence_interval][len(data_set)]:
         print('Reject máx value')
         del data_set[-1]
@@ -57,11 +68,16 @@ def dixonTest (data_set, confidence_interval):
     else:
         pass
     
+    ## Print the new data set for the user
     print("New data set: ", *data_set, sep = ", ")
     
     return data_set
 
 def Ttest (data_set, comparable, confidence_interval):
+    """
+    Function to calculate the p-value of the students t test for one sample using
+    scipy library
+    """
     from scipy import stats
     t_stat, p_value = scipy.stats.ttest_1samp(data_set, comparable, axis = 0)
     print(f"P-Value: {p_value}  T-Statistic: {t_stat}")
@@ -69,6 +85,16 @@ def Ttest (data_set, comparable, confidence_interval):
         print('Equal numbers')
     else:
         print('Different numbers')
+
+def sucrose_polarimetry (alfa, volume, tube_length, solution_concentration):
+    """
+    Function to calculate the % of sucrose in the analysed sucrose via polarimetry
+    """
+    sample_sucrose_mass = (alfa * volume) / (66.5 * tube_length) ## 66.5 is a constant
+    expected_sucrose_grams = (solution_concentration * volume) / 100
+    %_sucrose = (sample_sucrose_mass * 100) / expected_sucrose_grams
+    return %_sucrose
+
 
 
 
