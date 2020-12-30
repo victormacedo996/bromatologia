@@ -153,12 +153,18 @@ def formolIndex (NaOH_volume, NaOH_molarity, NaOH_fc, grams_of_honey):
     return formol_index
 
 def fixedMineralWaste (crucible_tare, sample_weight, weight_after_calcination, sample_humidity):
+    """
+    Function to calculate the fixed mineral waste
+    """
     FMW = (crucible_tare + sample_weight) - weight_after_calcination
     FMW_in_100g = getPercentage(FMW, sample_weight)
     FMW_percentage_in_dry_sample = getPercentage(FMW_in_100g, 100 - sample_humidity)
     return FMW_percentage_in_dry_sample
 
 def kjedahl (convertion_factor, sample_humidity, sample_weight, volume_of_HCl_in_erlenmayer, HCl_molarity, HCl_fc, volume_of_NaOH_spent, NaOH_molarity, NaOH_fc):
+    """
+    Function to calculate protein in dry base using kjedahl method
+    """
     number_of_mols_of_HCl = volume_of_HCl_in_erlenmayer * HCl_molarity * HCl_fc
     number_of_mols_of_NaOH = volume_of_NaOH_spent * NaOH_molarity * NaOH_fc
     number_of_mols_of_nitrogen = number_of_mols_of_HCl - number_of_mols_of_NaOH
