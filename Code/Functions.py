@@ -102,7 +102,7 @@ def sucrosePolarimetry (alfa, volume, tube_length, solution_concentration):
     sucrose_percentage = getPercentage (sample_sucrose_mass, expected_sucrose_grams)
     return sucrose_percentage
 
-def icumsaClour (solution_concentration, absorbance_420nm, optical_length):
+def icumsaColour (solution_concentration, absorbance_420nm, optical_length):
     """
     Function to calculate the ICUMSA colour of the sucrose
     """
@@ -173,3 +173,5 @@ def kjedahl (convertion_factor, sample_humidity, sample_weight, volume_of_HCl_in
     protein_percentage_in_dry_sample = (percentage_of_protein * 100) / (100 - sample_humidity)
     return protein_percentage_in_dry_sample
 
+def flourAcidity ():
+    
