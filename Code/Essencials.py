@@ -26,3 +26,14 @@ def getPercentage (times100, divisor):
     """
     percentage = (times100 * 100) / divisor
     return percentage
+
+def getAnswer (answer):
+    """
+    Function to get YES or NO answer from the user
+    """
+    while True:
+        user_input = input(answer).lower()
+        if user_input != "y" and user_input != "n":
+            print('Use Y for yes and N for no')
+        else:
+            return user_input

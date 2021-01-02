@@ -1,4 +1,3 @@
-from Essencials import getPercentage
 def dixonTest (data_set, confidence_interval):
     """
     Function to execute dixon test and automacally change the samples data
@@ -48,7 +47,7 @@ def dixonTest (data_set, confidence_interval):
         pass
     
     ## Print the new data set for the user
-    print("New data set: ", *data_set, sep = ", ")
+    print("New data set: "*data_set, sep = ", ")
     
     return data_set
 
@@ -58,7 +57,7 @@ def Ttest (data_set, comparable, confidence_interval):
     scipy library
     """
     from scipy import stats
-    t_stat, p_value = scipy.stats.ttest_1samp(data_set, comparable, axis = 0)
+    t_stat, p_value = stats.ttest_1samp(data_set, comparable, axis = 0)
     print(f"P-Value: {p_value}  T-Statistic: {t_stat}")
     if p_value < confidence_interval:
         print('Equal numbers')
