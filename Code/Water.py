@@ -77,6 +77,18 @@ def chloride (AgNO3_molarity, AgNO3_fc, AgNO3_volume_used, sample_volume):
     chloride_mili_grams_per_liter = getPercentage (chloride_mili_grams * 10, sample_volume)
     return chloride_mili_grams_per_liter
 
-def consumedOxigen ()
-
-    
+def consumedOxigen (sample_volume, KMnO4_molarity, KMnO4_fc, KMnO4_volume_used, Na2C2O4_molarity, Na2C2O4_fc, Na2C2O4_volume_used, second_KMnO4_molarity, second_KMnO4_fc, second_KMnO4_volume_used):
+    """
+    Function to calculate the O2 consume in water
+    """
+    mols_KMnO4 = KMnO4_molarity * KMnO4_fc * KMnO4_volume_used
+    mols_Na2C2O4 = Na2C2O4_molarity * Na2C2O4_fc * Na2C2O4_volume_used
+    second_mols_KMnO4 = second_KMnO4_molarity * second_KMnO4_fc * second_KMnO4_volume_used
+    mols_of_Na2C2O4_neutralized = (5 * second_mols_KMnO4) / 2
+    mols_of_Na2C2O4_avalible = mols_Na2C2O4 - mols_of_Na2C2O4_neutralized
+    mols_of_KMnO4_that_reacted_with_avalible_Na2C2O4 = (2 * mols_of_Na2C2O4_avalible) / 5
+    mols_KMnO4_avalible = mols_KMnO4 - mols_of_KMnO4_that_reacted_with_avalible_Na2C2O4
+    mols_of_O2_producted = (mols_KMnO4_avalible * 5) / 4
+    O2_miligrams = mols_of_O2_producted * 32
+    O2_mili_grams_per_liter = getPercentage (O2_miligrams * 10, sample_volume)
+    return O2_mili_grams_per_liter
