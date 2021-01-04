@@ -3,7 +3,8 @@ from Essencials import getPercentage
 def alcalinity (H2SO4_concentration, H2SO4_fc, volume_spent_with_phenolphthalein, volume_spent_with_methyl_orange, water_volume_used):
     """
     Function to calculate the water alcalinity in mg of CaCO3/L. The result is a list with
-    the alcalinity of carbonate in the 0 position and bicarbonate in the 1 position
+    the alcalinity of carbonate in the 0 position, bicarbonate in the 1 position and 
+    hydroxide in position 3
     """
     total_spent = volume_spent_with_phenolphthalein + volume_spent_with_methyl_orange
     if volume_spent_with_phenolphthalein == 0:
@@ -30,16 +31,15 @@ def alcalinity (H2SO4_concentration, H2SO4_fc, volume_spent_with_phenolphthalein
         hydroxide = total_spent
         carbonate = 0
         bicarbonate = 0
-    
 
-    if hydroxide != 0:
-        print('Water must not be consumed')
 
-    else:
-        water_alcalinity = []
-        carbonate_alcalinity = ((H2SO4_concentration * H2SO4_fc * carbonate * 100) * 1000) / water_volume_used
-        bicarbonate_alcalinity = ((H2SO4_concentration * H2SO4_fc * bicarbonate * 100) * 1000) / water_volume_used
-        water_alcalinity.append(carbonate_alcalinity, bicarbonate_alcalinity)
+    water_alcalinity = []
+    carbonate_alcalinity = ((H2SO4_concentration * H2SO4_fc * carbonate * 100) * 1000) / water_volume_used
+    bicarbonate_alcalinity = ((H2SO4_concentration * H2SO4_fc * bicarbonate * 100) * 1000) / water_volume_used
+    hydroxide_alcalinity = ((H2SO4_concentration * H2SO4_fc * hydroxide * 100) * 1000) / water_volume_used
+    water_alcalinity.append(carbonate_alcalinity)
+    water_alcalinity.append(bicarbonate_alcalinity)
+    water_alcalinity.append(hydroxide_alcalinity)
 
     return water_alcalinity
 

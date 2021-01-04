@@ -1,12 +1,12 @@
-from Essencials import getOption
+from Essencials import getOption, getInteger
 from time import sleep
 from os import system
-import Menus
+from Menus import mainMenu, waterMenu
 
 mainMenu()
 
 
-food_choice = getFood('Wich food do you want to analyse? ')
+food_choice = getInteger ('Enter 4: ')
 
 if food_choice == 1:
     wheatFlourMenu ()

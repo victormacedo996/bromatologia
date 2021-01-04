@@ -1,4 +1,5 @@
 def dixonTest (data_set, confidence_interval):
+    import statistics
     """
     Function to execute dixon test and automacally change the samples data
     """
@@ -43,11 +44,14 @@ def dixonTest (data_set, confidence_interval):
     elif Qmin > dixon_table[confidence_interval][len(data_set)]:
         print('Reject min value')
         del data_set[0]
-    else:
-        pass
+    elif Qmax > dixon_table[confidence_interval][len(data_set)] and Qmin > dixon_table[confidence_interval][len(data_set)]:
+        ## Print the new data set for the user
+        print("New data set: "*data_set, sep = ", ")
+
+    print('\n')
     
-    ## Print the new data set for the user
-    print("New data set: "*data_set, sep = ", ")
+    print(f"Mean value: {sum(data_set) / len(data_set)}")
+    print(f"Standard derivarion: {statistics.stdev(data_set)}")
     
     return data_set
 
