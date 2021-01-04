@@ -1,5 +1,5 @@
 from Essencials import getPercentage
-def InvertedSugarInHoney (fehlings_title, expended_solution, solution_percentage):
+def invertedSugar (fehlings_title, expended_solution, solution_percentage):
     """
     Function to get the percentage of inverted sugar in honey
     """
@@ -7,7 +7,7 @@ def InvertedSugarInHoney (fehlings_title, expended_solution, solution_percentage
     percentage_of_inverted_sugar = getPercentage(inverted_sugar_in_the_expended_solution, solution_percentage)
     return percentage_of_inverted_sugar
 
-def sucroseInHoney (inverted_sugar_pre_hidrolisys, inverted_sugar_post_hidrolisys):
+def sucrose (inverted_sugar_pre_hidrolisys, inverted_sugar_post_hidrolisys):
     """
     Function to calculate the sucrose percentage in honey
     """
@@ -15,7 +15,7 @@ def sucroseInHoney (inverted_sugar_pre_hidrolisys, inverted_sugar_post_hidrolisy
     sucrose = inverted_sugar_from_sucrose * 0.95 ## 0.95 is a constant
     return sucrose
 
-def honeyAcidity (NaOH_volume, NaOH_molarity, NaOH_fc, honey_solution_concentration, honey_solution_volume):
+def acidity (NaOH_volume, NaOH_molarity, NaOH_fc, honey_solution_concentration, honey_solution_volume):
     """
     Function to get acidity in honey - meq/kg
     """

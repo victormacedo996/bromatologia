@@ -8,7 +8,7 @@ def fixedMineralWaste (crucible_tare, sample_weight, weight_after_calcination, s
     FMW_percentage_in_dry_sample = getPercentage(FMW_in_100g, 100 - sample_humidity)
     return FMW_percentage_in_dry_sample
 
-def flourAcidity (flour_solution_percentage, volume_of_flour_solution_used, volume_of_NaOH_spent, NaOH_molarity, NaOH_fc, sample_humidity):
+def acidity (flour_solution_percentage, volume_of_flour_solution_used, volume_of_NaOH_spent, NaOH_molarity, NaOH_fc, sample_humidity):
     """
     Function to calculate the flour acidity in KOH/100g
     """
@@ -19,7 +19,7 @@ def flourAcidity (flour_solution_percentage, volume_of_flour_solution_used, volu
     return KOH_in_100g_of_sample
 
 
-def kjedahl (convertion_factor, sample_humidity, sample_weight, volume_of_HCl_in_erlenmayer, HCl_molarity, HCl_fc, volume_of_NaOH_spent, NaOH_molarity, NaOH_fc):
+def protein (convertion_factor, sample_humidity, sample_weight, volume_of_HCl_in_erlenmayer, HCl_molarity, HCl_fc, volume_of_NaOH_spent, NaOH_molarity, NaOH_fc):
     """
     Function to calculate protein in dry base using kjedahl method
     """

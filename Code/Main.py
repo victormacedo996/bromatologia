@@ -1,27 +1,25 @@
-import Honey
-from Essencials import getFloat, getAnswer
-import Statistic
+from Essencials import getOption
+from time import sleep
+from os import system
+import Menus
 
-data = []
+mainMenu()
 
-while True:
-    sample = getFloat ('Enter sample: ')
-    data.append(sample)
-    answer = getAnswer ('Do you want to add another sample? (Y/N): ')
-    if answer == 'y':
-        pass
-    else:
-        break
-    if len(data) == 10:
-        break
 
-data1 = []
+food_choice = getFood('Wich food do you want to analyse? ')
 
-for sample in data:
-    inverted_sugar = Honey.InvertedSugarInHoney(0.545, sample, 10)
-    data1.append(inverted_sugar)
-    print(*data1, sep = ', ')
+if food_choice == 1:
+    wheatFlourMenu ()
+elif food_choice == 2:
+    honeyMenu ()
+elif food_choice == 3:
+    sucroseMenu ()
+elif food_choice == 4:
+    waterMenu ()
+else:
+    print('Thank you for using the program')
+    sleep(2)
+    exit()
 
-dixon = Statistic.dixonTest(data1, 0.9)
-ttest = Statistic.Ttest(dixon, 50, 0.95)
+
 
