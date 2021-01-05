@@ -1,15 +1,7 @@
 from Statistic import dixonTest, Ttest
 from Essencials import getOption, getFloat, getAnswer, getInteger
+from Essencials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
 from os import system
-def displayOptions(option_list):
-    """
-    Function to print the options for the menus contained in a list
-    """
-    for item in option_list:
-        if item == 'Exit' or item == 'Back to main menu':
-            print(f"  0. {item}")
-        else:
-            print(f"  {option_list.index(item) + 1}. {item}")
 
 def mainMenu ():
     """
@@ -66,6 +58,8 @@ def waterMenu ():
     select_option = getInteger ('Enter 1: ')
     if select_option == False:
         mainMenu()
+
+    ## Condition to calculate water alcalinity ##
     elif select_option == 1:
         from Water import alcalinity
         """
@@ -74,41 +68,16 @@ def waterMenu ():
         system('clear')
         print('Water alcalinity selected')
         print('\n')
+
+        ## Getting constants ##
         H2SO4_concentration = getFloat ('Enter the H2SO4 concentration: ')
         H2SO4_fc = getFloat ('Enter the H2SO4 correction factor: ')
         water = getFloat('Enter the water volume used: ')
-        volume_spent_with_phenolphthalein = [] ## List to store the users input
-        volume_spent_with_methyl_orange = [] ## List to store the users input
-        data_set = [] ## List to store the results
-        i = 1 ## Counting variable
-        answer = 'y' 
-        while True:
-        # Loop while to get the variables of the samples
         
-            if i == 1: ## Condition to print the right ordinal number
-                r = f"{i}st"
-            elif i == 2:
-                r = f"{i}nd"
-            elif i == 3:
-                r = f"{i}rd"
-            else:
-                r = f"{i}th"
-            phenolphthalein = getFloat(f"Enter {r} volume of phenolphthalein: ")
-            methyl_orange = getFloat(f"Enter {r} volume of methyl orange: ")
-            volume_spent_with_phenolphthalein.append(phenolphthalein)
-            volume_spent_with_methyl_orange.append(methyl_orange)
-            answer = getAnswer ('Add another sample? (Y/N): ')
-            if len(volume_spent_with_phenolphthalein) < 3 and answer != 'y':
-                answer = 'y'
-                print('You must enter at least 3 samples')
-            elif answer != 'y':
-                break
-            else:
-                if len(volume_spent_with_phenolphthalein) == 10:
-                    break
-                else:
-                    pass
-            i += 1
+
+        volume_spent_with_phenolphthalein, volume_spent_with_methyl_orange = getTwoSamples ('phenolphthalein', 'methyl orange')
+
+        data_set = [] ## List to store the results
         for phenolphthalein, methyl_orange in zip(volume_spent_with_phenolphthalein, volume_spent_with_methyl_orange):
             """
             For loop to run throught the list of samples and apply them in the alcalinity 
@@ -118,31 +87,14 @@ def waterMenu ():
             data_set.append(result)
 
         system('clear')
+        ## Statistical analysis
         print('Statistical analisys - Dixon test')
         print('Dixons confidence intervals:')
-        print("""
-                1. 90%
-                2. 95%
-                3. 99%
-                """)
-        confidence_interval = 0
-        while True:
-            confidence_interval = getInteger ('Enter the confidence interval: ')
-            if confidence_interval < 1 or confidence_interval > 3:
-                print('You must enter a valid confidence interval')
-            else:
-                if confidence_interval == 1:
-                    confidence_interval = 0.9
-                    break
-                elif confidence_interval == 2:
-                    confidence_interval = 0.95
-                    break
-                else:
-                    confidence_interval = 0.99
-                    break
+        confidence_interval = getDixonConfidenceInterval ()
 
         ## Executing dixon test with the data for each variable
         print('Dixon test result:')
+        print('\n')
         print('Carbonate')
         carbonate = dixonTest (list(item[0] for item in data_set), confidence_interval)
         print('\n')
@@ -154,11 +106,13 @@ def waterMenu ():
         print('\n')
 
         print('Statistical analisys - Students T test')
+        ## Executing Students T test for each variable
         confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
         comparable_carbonate = getFloat('Enter the comparable for carbonate: ')
         comparable_bicarbonate = getFloat('Enter the comparable for bicarbonate: ')
         comparable_hydroxide = getFloat('Enter the comparable for hydroxide: ')
         print('Students T test results:')
+        print('\n')
         print('Carbonate')
         Ttest(carbonate, comparable_carbonate, confidence_interval)
         print('\n')
@@ -168,76 +122,36 @@ def waterMenu ():
         print('Hydroxide')
         Ttest(hydroxide, comparable_hydroxide, confidence_interval)
 
+    ## Condition to calculate water hardness ##
     elif select_option == 2:
         from Water import waterHardness
         system('clear')
         print('Water hardness selected')
         print('\n')
-        data_set = [] ## List to store the results
+
+        ## Getting constants ##
         EDTA_standard = getFloat ('Enter the EDTA standard: ')
         quantity_of_CaCO3_neutralized_by_EDTA = getFloat ('Enter the quantity of CaCO3 nwutralized by the EDTA: ')
         EDTA_molatity = getFloat ('Enter the EDTA molarity: ')
         EDTA_fc = getFloat ('Enter the correction factor of the EDTA: ')
         sample_volume = getFloat ('Enter the sample volume: ')
-        i = 1 ## Counting variable
-        answer = 'y'
-        while True:
-        # Loop while to get the variables of the samples
-        
-            if i == 1: ## Condition to print the right ordinal number
-                r = f"{i}st"
-            elif i == 2:
-                r = f"{i}nd"
-            elif i == 3:
-                r = f"{i}rd"
-            else:
-                r = f"{i}th"
 
-            EDTA_spent = getFloat ('Enter the volume of EDTA spent: ')
-            data_set.append(EDTA_spent)
-            answer = getAnswer ('Add another sample? (Y/N): ')
-            if len(data_set) < 3 and answer != 'y':
-                answer = 'y'
-                print('You must enter at least 3 samples')
-            elif answer != 'y':
-                break
-            else:
-                if len(data_set) == 10:
-                    break
-                else:
-                    pass
-            i += 1
+        ## Getting variables ##
+        EDTA_spent = getOneSample ('Enter the EDTA spent')
 
-        result_set = []
-        for item in data_set:
+        ## Loop to execute the alcalinity function with every variable ##
+        data_set = [] ## List to store the results
+        for item in EDTA_spent:
             result = waterHardness (EDTA_standard, quantity_of_CaCO3_neutralized_by_EDTA, EDTA_molatity, EDTA_fc, item, sample_volume)
-            result_set.append(result)
+            data_set.append(result)
         
         system('clear')
+
+
         print('Statistical analisys - Dixon test')
-        print('Dixons confidence intervals:')
-        print("""
-                1. 90%
-                2. 95%
-                3. 99%
-                """)
-        confidence_interval = 0
-        while True:
-            confidence_interval = getInteger ('Enter the confidence interval: ')
-            if confidence_interval < 1 or confidence_interval > 3:
-                print('You must enter a valid confidence interval')
-            else:
-                if confidence_interval == 1:
-                    confidence_interval = 0.9
-                    break
-                elif confidence_interval == 2:
-                    confidence_interval = 0.95
-                    break
-                else:
-                    confidence_interval = 0.99
-                    break
+        confidence_interval = getDixonConfidenceInterval ()
         ## Executing dixon test
-        dixon_data_set = dixonTest (result_set, confidence_interval)
+        dixon_data_set = dixonTest (data_set, confidence_interval)
         print('\n')
 
         print('Statistical analisys - Students T test')
@@ -245,9 +159,5 @@ def waterMenu ():
         comparable = getFloat('Enter the comparable: ')
         Ttest(dixon_data_set, comparable, confidence_interval)
 
-
-        
-
-
-
-
+    ## Condition to calculate total soluble solids ##
+    elif select_option == 3:

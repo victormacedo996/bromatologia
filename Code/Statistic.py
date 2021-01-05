@@ -45,11 +45,9 @@ def dixonTest (data_set, confidence_interval):
         if Qmax > dixon_table[confidence_interval][len(data_set)]:
             print('Reject máx value')
             del data_set[-1]
-            print("New data set: "*data_set, sep = ", ")
         elif Qmin > dixon_table[confidence_interval][len(data_set)]:
             print('Reject min value')
             del data_set[0]
-            print("New data set: "*data_set, sep = ", ")
         elif Qmax > dixon_table[confidence_interval][len(data_set)] and Qmin > dixon_table[confidence_interval][len(data_set)]:
             ## Print the new data set for the user
             print('Reject min and máx value')
@@ -69,7 +67,7 @@ def Ttest (data_set, comparable, confidence_interval):
     from scipy import stats
     t_stat, p_value = stats.ttest_1samp(data_set, comparable, axis = 0)
     print(f"P-Value: {p_value}  T-Statistic: {t_stat}")
-    if p_value < confidence_interval:
+    if p_value < (1 - confidence_interval):
         print('Equal numbers')
     else:
         print('Different numbers')
