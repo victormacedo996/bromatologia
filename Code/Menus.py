@@ -1,9 +1,10 @@
-from Statistic import dixonTest, Ttest
-from Essencials import getOption, getFloat, getAnswer, getInteger
-from Essencials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
-from os import system
+
 
 def mainMenu ():
+    from Statistic import dixonTest, Ttest
+    from Essencials import getOption, getFloat, getAnswer, getInteger
+    from Essencials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
+    from os import system
     """
     Function to print the main menu of the program
     """
@@ -14,6 +15,10 @@ def mainMenu ():
     displayOptions(options)
 
 def wheatFlourMenu ():
+    from Statistic import dixonTest, Ttest
+    from Essencials import getOption, getFloat, getAnswer, getInteger
+    from Essencials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
+    from os import system
     """
     Function to print the menu for the menu for the wheat flour analysis
     """
@@ -24,6 +29,10 @@ def wheatFlourMenu ():
     displayOptions(options)
 
 def honeyMenu ():
+    from Statistic import dixonTest, Ttest
+    from Essencials import getOption, getFloat, getAnswer, getInteger
+    from Essencials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
+    from os import system
     """
     Function to print the menu for the menu for the honey analysis
     """
@@ -35,6 +44,10 @@ def honeyMenu ():
     
 
 def sucroseMenu ():
+    from Statistic import dixonTest, Ttest
+    from Essencials import getOption, getFloat, getAnswer, getInteger
+    from Essencials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
+    from os import system
     """
     Function to print the menu for the menu for the sucrose analysis
     """
@@ -45,6 +58,10 @@ def sucroseMenu ():
     displayOptions(options)
 
 def waterMenu ():
+    from Statistic import dixonTest, Ttest
+    from Essencials import getOption, getFloat, getAnswer, getInteger
+    from Essencials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
+    from os import system
     """
     Function to print the menu for the menu for the water analysis
     """
@@ -70,7 +87,8 @@ def waterMenu ():
         print('\n')
 
         ## Getting constants ##
-        H2SO4_concentration = getFloat ('Enter the H2SO4 concentration: ')
+        from Essencials import getFloat
+        H2SO4_concentration = getFloat ('Enter the H2SO4 molarity: ')
         H2SO4_fc = getFloat ('Enter the H2SO4 correction factor: ')
         water = getFloat('Enter the water volume used: ')
         
@@ -231,8 +249,8 @@ def waterMenu ():
         print('\n')
 
         ## Getting constants ##
-        AgNO3_molarity = getFloat ('Enter the Na2S2O3 molarity: ')
-        AgNO3_fc = getFloat = ('Enter the correction factor of the Na2SO3: ')
+        AgNO3_molarity = getFloat ('Enter AgNO3 molarity: ')
+        AgNO3_fc = getFloat ('Enter the correction factor of the AgNO3: ')
         sample_volume = getFloat('Enter the sample volume: ')
         AgNO3_volume_used = getOneSample ('volume of AgNO3 spent')
 
@@ -242,6 +260,7 @@ def waterMenu ():
             data_set.append(result)
 
         ## Executing Dixon test ##
+        system('clear')
         print('Statistical analysis - Dixon test')
         confidence_interval = getDixonConfidenceInterval ()
         dixon_data_set = dixonTest (data_set, confidence_interval)
@@ -262,7 +281,7 @@ def waterMenu ():
         Na2C2O4_molarity = getFloat ('Enter the Na2C2O4 molarity: ')
         Na2C2O4_fc = getFloat ('Enter the correction factor for the Na2C2O4: ')
         second_KMnO4_molarity = getFloat ('Enter the second KMnO4 used molarity: ')
-        second_KMnO4_fc getFloat ('Enter the second correction factor for the second KMnO4: ')
+        second_KMnO4_fc = getFloat ('Enter the second correction factor for the second KMnO4: ')
 
         ## Getting variables ##
         KMnO4_volume_used = getOneSample ('fist KMnO4 volume used')
