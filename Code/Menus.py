@@ -105,7 +105,7 @@ def waterMenu ():
                     break
                 else:
                     pass
-        
+            i += 1
         for phenolphthalein, methyl_orange in zip(volume_spent_with_phenolphthalein, volume_spent_with_methyl_orange):
             """
             For loop to run throught the list of samples and apply them in the alcalinity 
@@ -138,30 +138,30 @@ def waterMenu ():
                     confidence_interval = 0.99
                     break
 
-    ## Executing dixon test with the data for each variable
-    print('Dixon test result:')
-    print('Carbonate')
-    carbonate = dixonTest (list(item[0] for item in data_set), confidence_interval)
-    print('\n')
-    print('Bicarbonate')
-    bicarbonate = dixonTest (list(item[1] for item in data_set), confidence_interval)
-    print('\n')
-    print('Hydroxide')
-    hydroxide = dixonTest (list(item[2] for item in data_set), confidence_interval)
-    print('\n')
+        ## Executing dixon test with the data for each variable
+        print('Dixon test result:')
+        print('Carbonate')
+        carbonate = dixonTest (list(item[0] for item in data_set), confidence_interval)
+        print('\n')
+        print('Bicarbonate')
+        bicarbonate = dixonTest (list(item[1] for item in data_set), confidence_interval)
+        print('\n')
+        print('Hydroxide')
+        hydroxide = dixonTest (list(item[2] for item in data_set), confidence_interval)
+        print('\n')
 
-    print('Statistical analisys - Students T test')
-    confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
-    comparable = getFloat('Enter the comparable: ')
-    print('Students T test results:')
-    print('Carbonate')
-    Ttest(carbonate, comparable, confidence_interval)
-    print('\n')
-    print('Bicarbonate')
-    Ttest(bicarbonate, comparable, confidence_interval)
-    print('\n')
-    print('Hydroxide')
-    Ttest(hydroxide, comparable, confidence_interval)
+        print('Statistical analisys - Students T test')
+        confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
+        comparable = getFloat('Enter the comparable: ')
+        print('Students T test results:')
+        print('Carbonate')
+        Ttest(carbonate, comparable, confidence_interval)
+        print('\n')
+        print('Bicarbonate')
+        Ttest(bicarbonate, comparable, confidence_interval)
+        print('\n')
+        print('Hydroxide')
+        Ttest(hydroxide, comparable, confidence_interval)
 
 
 
