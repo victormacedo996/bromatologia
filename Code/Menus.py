@@ -13,7 +13,7 @@ def mainMenu ():
     print('Foods that can be analysed:')
     options = ['Wheat flour', 'Honey', 'Sucrose', 'Water', 'Exit']
     displayOptions(options)
-
+    
 def wheatFlourMenu ():
     from Statistic import dixonTest, Ttest
     from Essencials import getOption, getFloat, getAnswer, getInteger
@@ -72,7 +72,7 @@ def waterMenu ():
                 'Chloride', 'Oxigen consumed', 'Back to main menu']
 
     displayOptions(options)
-    select_option = getInteger ('Enter 1: ')
+    select_option = getInteger ('Choose the analysis: ')
     if select_option == False:
         mainMenu()
 
