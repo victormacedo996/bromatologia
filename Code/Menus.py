@@ -85,11 +85,12 @@ def waterMenu ():
             """
             result = alcalinity(H2SO4_concentration, H2SO4_fc, phenolphthalein, methyl_orange, water)
             data_set.append(result)
-
+        
+        print(data_set)
+        
         system('clear')
         ## Statistical analysis
         print('Statistical analisys - Dixon test')
-        print('Dixons confidence intervals:')
         confidence_interval = getDixonConfidenceInterval ()
 
         ## Executing dixon test with the data for each variable
@@ -159,5 +160,73 @@ def waterMenu ():
         comparable = getFloat('Enter the comparable: ')
         Ttest(dixon_data_set, comparable, confidence_interval)
 
-    ## Condition to calculate total soluble solids ##
+    ## Condition to calculate the total soluble solids ##
     elif select_option == 3:
+        from Water import totalSolubleSolids
+        system ('clear')
+        print('Total soluble solids selected')
+        print('\n')
+
+        capsule_weight = getOneSample ('capsule weight')
+        total_weight_after_dry = getOneSample ('weight after dryed (capsule + sample)')
+        sample_volume = getOneSample ('sample volume')
+
+        data_set = []
+        for capsule_weight, total_weight_after_dry, sample_volume in zip(capsule_weight, total_weight_after_dry, sample_volume):
+            result = totalSolubleSolids (capsule_weight, total_weight_after_dry, sample_volume)
+            data_set.append(result)
+
+        system ('clear')
+
+        ## Executing dixon test ##
+        print('Statistical analisys - Dixon test')
+        print('\n')
+
+        conidence_interval = getDixonConfidenceInterval ()
+        dixon_data_set = dixonTest(data_set, confidence_interval)
+        print('\n')
+
+        ## Executing Students T test ##
+        print('Statistical analisys - Students T test')
+        confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
+        comparable = getFloat('Enter the comparable: ')
+        Ttest(dixon_data_set, comparable, confidence_interval)
+
+    ## Condition to calculate total residual chlorine ##
+    elif select_option == 4:
+        from Water import residualChlorine
+        system ('clear')
+        print('Residual chlorine selected')
+        print('\n')
+
+        ## Getting constants ##
+        Na2S2O3_molarity = getFloat ('Enter the Na2S2O3 molarity: ')
+        Na2S2O3_fc = getFloat = ('Enter the correction factor of the Na2SO3: ')
+        sample_volume = getFloat('Enter the sample volume: ')
+
+        ## Getting variables ##
+        Na2S2O3_volume_used = getOneSample ('volume of Na2SO3 used')
+
+        ## Applying the function to all variables ##
+        data_set = []
+        for item in Na2S2O3_volume_used:
+            result = residualChlorine (Na2S2O3_molarity, Na2S2O3_fc, item, sample_volume)
+            data_set.append(result)
+        
+        ## Executing Dixon test ##
+        print('Statistical analysis - Dixon test')
+        confidence_interval = getDixonConfidenceInterval ()
+        dixon_data_set = dixonTest (data_set, confidence_interval)
+
+        ## Executing Students T test ##
+        print('Statistical analysis - Students T test')
+        confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
+        comparable = getFloat('Enter the comparable: ')
+        Ttest(dixon_data_set, comparable, confidence_interval)
+
+
+
+
+
+
+

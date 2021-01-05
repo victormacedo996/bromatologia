@@ -109,7 +109,7 @@ def displayOptions(option_list):
 def getOneSample (question_to_ask):
     """
     This function return a lists with the users input
-    usage: x  = getTwoSamples = ('question')
+    usage: x  = getTwoSamples ('question')
     """
     i = 1 ## Counting variable
     answer = 'y'
@@ -126,7 +126,7 @@ def getOneSample (question_to_ask):
         else:
             r = f"{i}th"
 
-        sample = getFloat (f"{question_to_ask}: ")
+        sample = getFloat (f"{r} {question_to_ask}: ")
         data_set.append(sample)
         answer = getAnswer ('Add another sample? (Y/N): ')
         if len(data_set) < 3 and answer != 'y':
