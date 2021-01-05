@@ -148,7 +148,6 @@ def waterMenu ():
         
         system('clear')
 
-
         print('Statistical analisys - Dixon test')
         confidence_interval = getDixonConfidenceInterval ()
         ## Executing dixon test
@@ -224,7 +223,68 @@ def waterMenu ():
         comparable = getFloat('Enter the comparable: ')
         Ttest(dixon_data_set, comparable, confidence_interval)
 
+    ## Condition to calculate chloride ##
+    elif select_option == 5:
+        from Water import chloride
+        system ('clear')
+        print('Chloride selected')
+        print('\n')
 
+        ## Getting constants ##
+        AgNO3_molarity = getFloat ('Enter the Na2S2O3 molarity: ')
+        AgNO3_fc = getFloat = ('Enter the correction factor of the Na2SO3: ')
+        sample_volume = getFloat('Enter the sample volume: ')
+        AgNO3_volume_used = getOneSample ('volume of AgNO3 spent')
+
+        data_set = []
+        for item in AgNO3_volume_used:
+            result = chloride (AgNO3_molarity, AgNO3_fc, item, sample_volume)
+            data_set.append(result)
+
+        ## Executing Dixon test ##
+        print('Statistical analysis - Dixon test')
+        confidence_interval = getDixonConfidenceInterval ()
+        dixon_data_set = dixonTest (data_set, confidence_interval)
+
+        ## Executing Students T test ##
+        print('Statistical analysis - Students T test')
+        confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
+        comparable = getFloat('Enter the comparable: ')
+        Ttest(dixon_data_set, comparable, confidence_interval)
+
+    ## Condition to calculate the consumed oxigen ##
+    elif select_option == 6:
+        from Water import consumedOxigen
+        ## Getting constants ##
+        sample_volume = getFloat('Enter the sample volume: ')
+        KMnO4_molarity = getFloat ('Enter the KMnO4 molarity: ')
+        KMnO4_fc = getFloat ('Enter the correction factor for the KMnO4: ')
+        Na2C2O4_molarity = getFloat ('Enter the Na2C2O4 molarity: ')
+        Na2C2O4_fc = getFloat ('Enter the correction factor for the Na2C2O4: ')
+        second_KMnO4_molarity = getFloat ('Enter the second KMnO4 used molarity: ')
+        second_KMnO4_fc getFloat ('Enter the second correction factor for the second KMnO4: ')
+
+        ## Getting variables ##
+        KMnO4_volume_used = getOneSample ('fist KMnO4 volume used')
+        Na2C2O4_volume_used = getOneSample ('Na2C2O4 volume used')
+        second_KMnO4_volume_used = getOneSample ('second KMnO4 volume used')
+
+        data_set = []
+
+        for item1, item2, item3 in zip(KMnO4_volume_used, Na2C2O4_volume_used, second_KMnO4_volume_used):
+            result = consumedOxigen (sample_volume, KMnO4_molarity, KMnO4_fc, item1, Na2C2O4_molarity, Na2C2O4_fc, item2, second_KMnO4_molarity, second_KMnO4_fc, item3)
+            data_set.append(result)
+
+        ## Executing Dixon test ##
+        print('Statistical analysis - Dixon test')
+        confidence_interval = getDixonConfidenceInterval ()
+        dixon_data_set = dixonTest (data_set, confidence_interval)
+
+        ## Executing Students T test ##
+        print('Statistical analysis - Students T test')
+        confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
+        comparable = getFloat('Enter the comparable: ')
+        Ttest(dixon_data_set, comparable, confidence_interval)
 
 
 

@@ -79,7 +79,7 @@ def chloride (AgNO3_molarity, AgNO3_fc, AgNO3_volume_used, sample_volume):
 
 def consumedOxigen (sample_volume, KMnO4_molarity, KMnO4_fc, KMnO4_volume_used, Na2C2O4_molarity, Na2C2O4_fc, Na2C2O4_volume_used, second_KMnO4_molarity, second_KMnO4_fc, second_KMnO4_volume_used):
     """
-    Function to calculate the O2 consume in water
+    Function to calculate the O2 consume in water in mg/L
     """
     mols_KMnO4 = KMnO4_molarity * KMnO4_fc * KMnO4_volume_used
     mols_Na2C2O4 = Na2C2O4_molarity * Na2C2O4_fc * Na2C2O4_volume_used
