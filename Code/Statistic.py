@@ -34,19 +34,23 @@ def dixonTest (data_set, confidence_interval):
     data_set.sort()
 
     ## Dixon's test equation
-    Qmax = abs((data_set[-1] - data_set[-2]) / (data_set[-1] - data_set[0]))
-    Qmin = abs((data_set[0] - data_set[1]) / (data_set[-1] - data_set[0]))
+    if (data_set[-1] - data_set[0]) == 0:
+        print('Cannot divide by zero, passing trought')
+        pass
+    else:
+        Qmax = abs((data_set[-1] - data_set[-2]) / (data_set[-1] - data_set[0]))
+        Qmin = abs((data_set[0] - data_set[1]) / (data_set[-1] - data_set[0]))
 
-    ## Modifying the data
-    if Qmax > dixon_table[confidence_interval][len(data_set)]:
-        print('Reject máx value')
-        del data_set[-1]
-    elif Qmin > dixon_table[confidence_interval][len(data_set)]:
-        print('Reject min value')
-        del data_set[0]
-    elif Qmax > dixon_table[confidence_interval][len(data_set)] and Qmin > dixon_table[confidence_interval][len(data_set)]:
-        ## Print the new data set for the user
-        print("New data set: "*data_set, sep = ", ")
+        ## Modifying the data
+        if Qmax > dixon_table[confidence_interval][len(data_set)]:
+            print('Reject máx value')
+            del data_set[-1]
+        elif Qmin > dixon_table[confidence_interval][len(data_set)]:
+            print('Reject min value')
+            del data_set[0]
+        elif Qmax > dixon_table[confidence_interval][len(data_set)] and Qmin > dixon_table[confidence_interval][len(data_set)]:
+            ## Print the new data set for the user
+            print("New data set: "*data_set, sep = ", ")
 
     print('\n')
     

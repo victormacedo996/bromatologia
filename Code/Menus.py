@@ -139,17 +139,28 @@ def waterMenu ():
                     break
 
     ## Executing dixon test with the data for each variable
-    carbonate = dixonTest ((item[0] for item in data_set), confidence_interval)
+    print('Dixon test result:')
+    print('Carbonate')
+    carbonate = dixonTest (list(item[0] for item in data_set), confidence_interval)
     print('\n')
-    bicarbonate = dixonTest ((item[1] for item in data_set), confidence_interval)
+    print('Bicarbonate')
+    bicarbonate = dixonTest (list(item[1] for item in data_set), confidence_interval)
     print('\n')
-    hydroxide = dixonTest ((item[2] for item in data_set), confidence_interval)
+    print('Hydroxide')
+    hydroxide = dixonTest (list(item[2] for item in data_set), confidence_interval)
+    print('\n')
 
     print('Statistical analisys - Students T test')
     confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
     comparable = getFloat('Enter the comparable: ')
+    print('Students T test results:')
+    print('Carbonate')
     Ttest(carbonate, comparable, confidence_interval)
+    print('\n')
+    print('Bicarbonate')
     Ttest(bicarbonate, comparable, confidence_interval)
+    print('\n')
+    print('Hydroxide')
     Ttest(hydroxide, comparable, confidence_interval)
 
 
