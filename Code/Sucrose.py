@@ -17,7 +17,7 @@ def icumsaColour (solution_concentration, absorbance_420nm, optical_length):
 
 def sucrosePercentage (fehlings_title, expended_solution, solution_percentage):
     """
-    Function to calculate inverted sugar in the expended solution
+    Function to calculate sucrose percentage in sucrose samples in %(p/v)
     """
     inverted_sugar_in_the_expended_solution = getPercentage(fehlings_title , expended_solution)
     percentage_of_inverted_sugar = getPercentage(inverted_sugar_in_the_expended_solution, solution_percentage)

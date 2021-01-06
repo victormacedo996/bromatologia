@@ -62,6 +62,7 @@ def wheatFlourMenu ():
         confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
         comparable = getFloat('Enter the comparable: ')
         Ttest(dixon_data_set, comparable, confidence_interval)
+        input('Press any key to back to main menu')
 
     ## Condition to calculate acidity ##
     elif select_option == 2:
@@ -98,6 +99,7 @@ def wheatFlourMenu ():
         confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
         comparable = getFloat('Enter the comparable: ')
         Ttest(dixon_data_set, comparable, confidence_interval)
+        input('Press any key to back to main menu')
 
     elif select_option == 3:
         ## Codition to calculate protein ##
@@ -137,6 +139,7 @@ def wheatFlourMenu ():
         confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
         comparable = getFloat('Enter the comparable: ')
         Ttest(dixon_data_set, comparable, confidence_interval)
+        input('Press any key to back to main menu')
 
 def honeyMenu ():
     from Statistic import dixonTest, Ttest
@@ -189,6 +192,7 @@ def honeyMenu ():
         confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
         comparable = getFloat('Enter the comparable: ')
         Ttest(dixon_data_set, comparable, confidence_interval)
+        input('Press any key to back to main menu')
 
     ## Condition to calculate sucrose in honey ##
     elif select_option == 2:
@@ -197,9 +201,7 @@ def honeyMenu ():
         print('\n')
 
         ## Getting variables ##
-        inverted_sugar_pre_hidrolisys = getOneSample ('amount of inverted sugar pre hidrolisys')
-        inverted_sugar_post_hidrolisys = getOneSample ('amount of inverted sugar post hidrolisys')
-
+        inverted_sugar_pre_hidrolisys, inverted_sugar_post_hidrolisys = getTwoSamples ('amount of inverted sugar pre hidrolisys', 'amount of inverted sugar post hidrolisys')
         data_set = []
         for item1, item2 in zip(inverted_sugar_pre_hidrolisys, inverted_sugar_post_hidrolisys):
             result = sucrose (item1, item2)
@@ -219,6 +221,7 @@ def honeyMenu ():
         confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
         comparable = getFloat('Enter the comparable: ')
         Ttest(dixon_data_set, comparable, confidence_interval)
+        input('Press any key to back to main menu')
 
     ## Condition to calculate acidity in Honey ##
     elif select_option == 3:
@@ -254,6 +257,7 @@ def honeyMenu ():
         confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
         comparable = getFloat('Enter the comparable: ')
         Ttest(dixon_data_set, comparable, confidence_interval)
+        input('Press any key to back to main menu')
 
     ## Condition to calculate the formol index ##
     elif select_option == 4:
@@ -288,31 +292,122 @@ def honeyMenu ():
         confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
         comparable = getFloat('Enter the comparable: ')
         Ttest(dixon_data_set, comparable, confidence_interval)
-        
-
-
-
-
-        
-
-        
-
-        
-    
+        input('Press any key to back to main menu')
 
 def sucroseMenu ():
     from Statistic import dixonTest, Ttest
     from Essencials import getOption, getFloat, getAnswer, getInteger
     from Essencials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
     from os import system
+    from Sucrose import sucroseByPolarimetry, icumsaColour, sucrosePercentage
     """
     Function to print the menu for the menu for the sucrose analysis
     """
     system('clear')
     print('Sucrose selected')
     print('Wich parameter do you want to analyse?')
-    options = ['Sucrose by polarimetry', 'Sucrose by Fehlings method', 'ICUMSA colour', 'Back to main menu']
+    options = ['Sucrose by polarimetry', 'ICUMSA colour', 'Sucrose by Fehlings method', 'Back to main menu']
     displayOptions(options)
+    select_option = getInteger ('Choose the analysis: ')
+    if select_option == False:
+        mainMenu()
+
+    ## Condition to calculate sucrose via polarimetry ##
+    elif select_option == 1:
+        system('clear')
+        print('Sucrose via polarimetry selected')
+        ## Getting constants ##
+        volume = getFloat('Enter the sample volume: ')
+        tube_length = getFloat ('Enter the tube lenght: ')
+        solution_concentration = getFloat ('Enter the solution concentration:')
+
+        ## Getting varaibles ##
+        alfa = getOneSample ('alfa')
+        data_set = []
+        for item in data_set:
+            result = sucroseByPolarimetry (item, volume, tube_length, solution_concentration)
+            data_set.append(result)
+
+        system('clear')
+        ## Executing dixon test ##
+        print('Statistical analisys - Dixon test')
+        print('\n')
+
+        confidence_interval = getDixonConfidenceInterval ()
+        dixon_data_set = dixonTest(data_set, confidence_interval)
+        print('\n')
+
+        ## Executing Students T test ##
+        print('Statistical analisys - Students T test')
+        confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
+        comparable = getFloat('Enter the comparable: ')
+        Ttest(dixon_data_set, comparable, confidence_interval)
+        input('Press any key to back to main menu')
+        
+    elif select_option == 2:
+        system('clear')
+        print('ICUMSA colour selected')
+
+        ## Getting constants ##
+        solution_concentration = getFloat('Enter the solution concentration: ')
+        optical_length = getFloat('Enter the optical lenght: ')
+
+        ## Getting variables ##
+        absorbance_420nm = getOneSample ('absorbance in 420nm')
+
+        data_set = []
+        for item in absorbance_420nm:
+            result = icumsaColour (solution_concentration, item, optical_length)
+            data_set.append(result)
+
+        system('clear')
+        ## Executing dixon test ##
+        print('Statistical analisys - Dixon test')
+        print('\n')
+
+        confidence_interval = getDixonConfidenceInterval ()
+        dixon_data_set = dixonTest(data_set, confidence_interval)
+        print('\n')
+
+        ## Executing Students T test ##
+        print('Statistical analisys - Students T test')
+        confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
+        comparable = getFloat('Enter the comparable: ')
+        Ttest(dixon_data_set, comparable, confidence_interval)
+        input('Press any key to back to main menu')
+
+    ## Condition to calculate the sucrose by Fehlings methos ##
+    elif select_option == 3:
+        system('clear')
+        print('Sucrose by fehlings method selected')
+
+        ## Getting constants ##
+        fehlings_title = getFloat('Enter Fehings title: ')
+        solution_percentage = getFloat ('Enter the solution percentage: ')
+
+        ## Getting variables ##
+        expended_solution = getOneSample ('volume expent')
+
+        data_set = []
+        for item in expended_solution:
+            result = sucrosePercentage (fehlings_title, item, solution_percentage)
+            data_set.append(result)
+
+        system('clear')
+        ## Executing dixon test ##
+        print('Statistical analisys - Dixon test')
+        print('\n')
+
+        confidence_interval = getDixonConfidenceInterval ()
+        dixon_data_set = dixonTest(data_set, confidence_interval)
+        print('\n')
+
+        ## Executing Students T test ##
+        print('Statistical analisys - Students T test')
+        confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
+        comparable = getFloat('Enter the comparable: ')
+        Ttest(dixon_data_set, comparable, confidence_interval)
+        input('Press any key to back to main menu')
 
 def waterMenu ():
     from Statistic import dixonTest, Ttest
@@ -396,6 +491,7 @@ def waterMenu ():
         print('\n')
         print('Hydroxide')
         Ttest(hydroxide, comparable_hydroxide, confidence_interval)
+        input('Press any key to back to main menu')
 
     ## Condition to calculate water hardness ##
     elif select_option == 2:
@@ -432,6 +528,7 @@ def waterMenu ():
         confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
         comparable = getFloat('Enter the comparable: ')
         Ttest(dixon_data_set, comparable, confidence_interval)
+        input('Press any key to back to main menu')
 
     ## Condition to calculate the total soluble solids ##
     elif select_option == 3:
@@ -464,6 +561,7 @@ def waterMenu ():
         confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
         comparable = getFloat('Enter the comparable: ')
         Ttest(dixon_data_set, comparable, confidence_interval)
+        input('Press any key to back to main menu')
 
     ## Condition to calculate total residual chlorine ##
     elif select_option == 4:
@@ -496,6 +594,7 @@ def waterMenu ():
         confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
         comparable = getFloat('Enter the comparable: ')
         Ttest(dixon_data_set, comparable, confidence_interval)
+        input('Press any key to back to main menu')
 
     ## Condition to calculate chloride ##
     elif select_option == 5:
@@ -526,6 +625,7 @@ def waterMenu ():
         confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
         comparable = getFloat('Enter the comparable: ')
         Ttest(dixon_data_set, comparable, confidence_interval)
+        input('Press any key to back to main menu')
 
     ## Condition to calculate the consumed oxigen ##
     elif select_option == 6:
@@ -560,3 +660,4 @@ def waterMenu ():
         confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
         comparable = getFloat('Enter the comparable: ')
         Ttest(dixon_data_set, comparable, confidence_interval)
+        input('Press any key to back to main menu')

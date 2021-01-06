@@ -1,5 +1,4 @@
 def dixonTest (data_set, confidence_interval):
-    import statistics
     """
     Function to execute dixon test and automacally change the samples data
     """
@@ -54,8 +53,19 @@ def dixonTest (data_set, confidence_interval):
 
     print('\n')
     
-    print(f"Mean value: {sum(data_set) / len(data_set)}")
-    print(f"Standard derivarion: {statistics.stdev(data_set)}")
+    number_of_observations = len(data_set)
+    mean = sum (data_set) / number_of_observations
+
+    
+    sum_of_squared_deviation = 0
+    for i in data_set:
+        sum_of_squared_deviation += (i - mean)**2
+
+    standard_derivation = ((sum_of_squared_deviation)/number_of_observations)**0.5
+
+    print(f"Mean: {mean}")
+    print(f"Standard derivation +/- {standard_derivation}")
+    
     
     return data_set
 
