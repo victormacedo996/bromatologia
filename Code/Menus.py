@@ -97,7 +97,45 @@ def wheatFlourMenu ():
         Ttest(dixon_data_set, comparable, confidence_interval)
 
     elif select_option == 3:
-        
+        ## Codition to calculate protein ##
+        system('clear')
+        print('Protein selected')
+
+        ## Getting constants ##
+        convertion_factor = getFloat ('Enter the convertion factor of the food source: ')
+        sample_humidity = getFloat ('Enter the sample humidity: ') 
+        sample_weight = getFloat ('Enter the sample weight: ')
+        volume_of_HCl_in_erlenmayer = getFloat ('Enter the volume of HCl in the erlenmayer: ')
+        HCl_molarity = getFloat ('Enter the HCl molarity: ')
+        HCl_fc = getFloat ('Enter the correction factor of the HCl: ')
+        NaOH_molarity = getFloat ('Enter the NaOH molarity: ')
+        NaOH_fc = getFloat ('Enter the correction factor of the NaOH: ')
+
+        ## Getting variable ##
+        volume_of_NaOH_spent = getOneSample ('volume of NaOH spent')
+
+        data_set = []
+        for item in volume_of_NaOH_spent:
+            result = protein(convertion_factor, sample_humidity, sample_weight, volume_of_HCl_in_erlenmayer, HCl_molarity, HCl_fc, item, NaOH_molarity, NaOH_fc)
+            data_set.append(result)
+
+        system('clear')
+        ## Executing dixon test ##
+        print('Statistical analisys - Dixon test')
+        print('\n')
+
+        conidence_interval = getDixonConfidenceInterval ()
+        dixon_data_set = dixonTest(data_set, confidence_interval)
+        print('\n')
+
+        ## Executing Students T test ##
+        print('Statistical analisys - Students T test')
+        confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
+        comparable = getFloat('Enter the comparable: ')
+        Ttest(dixon_data_set, comparable, confidence_interval)
+
+
+
 
 
 
