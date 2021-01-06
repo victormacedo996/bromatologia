@@ -17,6 +17,7 @@ def wheatFlourMenu ():
     from Essencials import getOption, getFloat, getAnswer, getInteger
     from Essencials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
     from os import system
+    from Flour import fixedMineralWaste, acidity, protein
     """
     Function to print the menu for the menu for the wheat flour analysis
     """
@@ -33,6 +34,7 @@ def wheatFlourMenu ():
     elif select_option == 1:
         system('clear')
         print('Fixed mineral waste selected')
+        print('\n')
         ## Getting constants ## 
         crucible_tare = getFloat ('Enter the crucible tare: ')
         sample_weight = getFloat ('Enter the sample weight: ')
@@ -51,7 +53,7 @@ def wheatFlourMenu ():
         print('Statistical analisys - Dixon test')
         print('\n')
 
-        conidence_interval = getDixonConfidenceInterval ()
+        confidence_interval = getDixonConfidenceInterval ()
         dixon_data_set = dixonTest(data_set, confidence_interval)
         print('\n')
 
@@ -65,6 +67,7 @@ def wheatFlourMenu ():
     elif select_option == 2:
         system('clear')
         print('Acidity selected')
+        print('\n')
 
         ## Getting constants ##
         flour_solution_percentage = getFloat ('Enter the percentage of the flour solution (ex: 10% = 10): ')
@@ -86,7 +89,7 @@ def wheatFlourMenu ():
         print('Statistical analisys - Dixon test')
         print('\n')
 
-        conidence_interval = getDixonConfidenceInterval ()
+        confidence_interval = getDixonConfidenceInterval ()
         dixon_data_set = dixonTest(data_set, confidence_interval)
         print('\n')
 
@@ -100,6 +103,7 @@ def wheatFlourMenu ():
         ## Codition to calculate protein ##
         system('clear')
         print('Protein selected')
+        print('\n')
 
         ## Getting constants ##
         convertion_factor = getFloat ('Enter the convertion factor of the food source: ')
@@ -124,7 +128,7 @@ def wheatFlourMenu ():
         print('Statistical analisys - Dixon test')
         print('\n')
 
-        conidence_interval = getDixonConfidenceInterval ()
+        confidence_interval = getDixonConfidenceInterval ()
         dixon_data_set = dixonTest(data_set, confidence_interval)
         print('\n')
 
@@ -134,17 +138,12 @@ def wheatFlourMenu ():
         comparable = getFloat('Enter the comparable: ')
         Ttest(dixon_data_set, comparable, confidence_interval)
 
-
-
-
-
-
-
 def honeyMenu ():
     from Statistic import dixonTest, Ttest
     from Essencials import getOption, getFloat, getAnswer, getInteger
     from Essencials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
     from os import system
+    from Honey import invertedSugar, sucrose, acidity, formolIndex
     """
     Function to print the menu for the menu for the honey analysis
     """
@@ -153,6 +152,152 @@ def honeyMenu ():
     print('Wich parameter do you want to analyse?')
     options = ['Inverted sugar', 'Sucrose', 'Acidity', 'Formol index', 'Back to main menu']
     displayOptions(options)
+    select_option = getInteger ('Choose the analysis: ')
+
+    if select_option == False:
+        mainMenu()
+
+    ## Condition to calculate inverted sugar in honey ##
+    elif select_option == 1:
+        system ('clear')
+        print('Inverted sugar selected')
+        print('\n')
+
+        ## Getting constants ##
+        fehlings_title = getFloat ('Enter the fehlings title: ')
+        solution_percentage = getFloat ('Enter the solution percentage: ')
+
+        ## Getting variable ##
+        expended_solution = getOneSample ('Volume of the expended solution')
+
+        data_set = []
+        for item in expended_solution:
+            result = invertedSugar (fehlings_title, item, solution_percentage)
+            data_set.append(result)
+
+        system('clear')
+        ## Executing dixon test ##
+        print('Statistical analisys - Dixon test')
+        print('\n')
+
+        confidence_interval = getDixonConfidenceInterval ()
+        dixon_data_set = dixonTest(data_set, confidence_interval)
+        print('\n')
+
+        ## Executing Students T test ##
+        print('Statistical analisys - Students T test')
+        confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
+        comparable = getFloat('Enter the comparable: ')
+        Ttest(dixon_data_set, comparable, confidence_interval)
+
+    ## Condition to calculate sucrose in honey ##
+    elif select_option == 2:
+        system('clear')
+        print('Sucrose in honey selected')
+        print('\n')
+
+        ## Getting variables ##
+        inverted_sugar_pre_hidrolisys = getOneSample ('amount of inverted sugar pre hidrolisys')
+        inverted_sugar_post_hidrolisys = getOneSample ('amount of inverted sugar post hidrolisys')
+
+        data_set = []
+        for item1, item2 in zip(inverted_sugar_pre_hidrolisys, inverted_sugar_post_hidrolisys):
+            result = sucrose (item1, item2)
+            data_set.append(result)
+
+        system('clear')
+        ## Executing dixon test ##
+        print('Statistical analisys - Dixon test')
+        print('\n')
+
+        confidence_interval = getDixonConfidenceInterval ()
+        dixon_data_set = dixonTest(data_set, confidence_interval)
+        print('\n')
+
+        ## Executing Students T test ##
+        print('Statistical analisys - Students T test')
+        confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
+        comparable = getFloat('Enter the comparable: ')
+        Ttest(dixon_data_set, comparable, confidence_interval)
+
+    ## Condition to calculate acidity in Honey ##
+    elif select_option == 3:
+        system('clear')
+        print('Acidity in honey selected')
+        print('\n')
+
+        ## Getting constants ##
+        NaOH_molarity = getFloat ('Enter the NaOH molaroty: ')
+        NaOH_fc = getFloat ('Enter the correction factor of the NaOH: ')
+        honey_solution_concentration = getFloat ('Enter the honey solution concentration (%p/v): ')
+        honey_solution_volume = getFloat ('Enter the honey solution volume: ')
+
+        ## Getting variables ##
+        NaOH_volume = getOneSample ('volume of NaOH used')
+
+        data_set = []
+        for item in NaOH_volume:
+            result = acidity (item, NaOH_molarity, NaOH_fc, honey_solution_concentration, honey_solution_volume)
+            data_set.appen(result)
+
+        system('clear')
+        ## Executing dixon test ##
+        print('Statistical analisys - Dixon test')
+        print('\n')
+
+        confidence_interval = getDixonConfidenceInterval ()
+        dixon_data_set = dixonTest(data_set, confidence_interval)
+        print('\n')
+
+        ## Executing Students T test ##
+        print('Statistical analisys - Students T test')
+        confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
+        comparable = getFloat('Enter the comparable: ')
+        Ttest(dixon_data_set, comparable, confidence_interval)
+
+    ## Condition to calculate the formol index ##
+    elif select_option == 4:
+        system('clear')
+        print('Formol index selected')
+        print('\n')
+
+        ## Getting constants ##
+        NaOH_molarity = getFloat('Enter the NaOH molarity: ')
+        NaOH_fc = getFloat('Enter the correction factor for the NaOH: ')
+        grams_of_honey = getFloat('Enter the grams of honey used: ')
+
+        ## Getting variable ##
+        NaOH_volume = getOneSample ('volume of NaOH used')
+
+        data_set = []
+        for item in NaOH_volume:
+            result = formolIndex (item, NaOH_molarity, NaOH_fc, grams_of_honey)
+            data_set.append(result)
+
+        system('clear')
+        ## Executing dixon test ##
+        print('Statistical analisys - Dixon test')
+        print('\n')
+
+        confidence_interval = getDixonConfidenceInterval ()
+        dixon_data_set = dixonTest(data_set, confidence_interval)
+        print('\n')
+
+        ## Executing Students T test ##
+        print('Statistical analisys - Students T test')
+        confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
+        comparable = getFloat('Enter the comparable: ')
+        Ttest(dixon_data_set, comparable, confidence_interval)
+        
+
+
+
+
+        
+
+        
+
+        
     
 
 def sucroseMenu ():
@@ -310,7 +455,7 @@ def waterMenu ():
         print('Statistical analisys - Dixon test')
         print('\n')
 
-        conidence_interval = getDixonConfidenceInterval ()
+        confidence_interval = getDixonConfidenceInterval ()
         dixon_data_set = dixonTest(data_set, confidence_interval)
         print('\n')
 

@@ -28,5 +28,5 @@ def protein (convertion_factor, sample_humidity, sample_weight, volume_of_HCl_in
     number_of_mols_of_nitrogen = number_of_mols_of_HCl - number_of_mols_of_NaOH
     protein_mass = number_of_mols_of_nitrogen * 14 * convertion_factor
     percentage_of_protein = getPercentage(protein_mass, sample_weight)/ 1000
-    protein_percentage_in_dry_sample = getPercentage(percentage_of_protein, (100 - sample_humidity)
+    protein_percentage_in_dry_sample = (percentage_of_protein * 100) / (100 - sample_humidity)
     return protein_percentage_in_dry_sample
