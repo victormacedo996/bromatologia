@@ -1,5 +1,3 @@
-
-
 def mainMenu ():
     from Statistic import dixonTest, Ttest
     from Essencials import getOption, getFloat, getAnswer, getInteger
@@ -27,6 +25,82 @@ def wheatFlourMenu ():
     print('Wich parameter do you want to analyse?')
     options = ['Fixed mineral waste', 'Acidity', 'Protein', 'Back to main menu']
     displayOptions(options)
+    select_option = getInteger ('Choose the analysis: ')
+    if select_option == False:
+        mainMenu()
+
+    ## Condition to calculate fixed mineral waste ##
+    elif select_option == 1:
+        system('clear')
+        print('Fixed mineral waste selected')
+        ## Getting constants ## 
+        crucible_tare = getFloat ('Enter the crucible tare: ')
+        sample_weight = getFloat ('Enter the sample weight: ')
+        sample_humidity = getFloat ('Enter the sample humidity (ex: 20% = 20): ')
+
+        ## Getting variable ##
+        weight_after_calcination = getOneSample ('weight after calcination')
+
+        data_set = []
+        for item in weight_after_calcination:
+            result = fixedMineralWaste (crucible_tare, sample_weight, item, sample_humidity)
+            data_set.append(result)
+
+        system('clear')
+        ## Executing dixon test ##
+        print('Statistical analisys - Dixon test')
+        print('\n')
+
+        conidence_interval = getDixonConfidenceInterval ()
+        dixon_data_set = dixonTest(data_set, confidence_interval)
+        print('\n')
+
+        ## Executing Students T test ##
+        print('Statistical analisys - Students T test')
+        confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
+        comparable = getFloat('Enter the comparable: ')
+        Ttest(dixon_data_set, comparable, confidence_interval)
+
+    ## Condition to calculate acidity ##
+    elif select_option == 2:
+        system('clear')
+        print('Acidity selected')
+
+        ## Getting constants ##
+        flour_solution_percentage = getFloat ('Enter the percentage of the flour solution (ex: 10% = 10): ')
+        volume_of_flour_solution_used =  getFloat ('Enter the volume of flour solution used: ')
+        NaOH_molarity = getFloat ('Enter the NaOH molarity: ')
+        NaOH_fc = ('Enter the correction factor of the NaOH: ')
+        sample_humidity = ('Enter the sample humidity: ')
+
+        ## Getting variable ##
+        volume_of_NaOH_spent = getOneSample ('volume of NaOH spent')
+
+        data_set = []
+        for item in volume_of_NaOH_spent:
+            result = acidity(flour_solution_percentage, volume_of_flour_solution_used, item, NaOH_molarity, NaOH_fc, sample_humidity)
+            data_set.append(result)
+
+        system('clear')
+        ## Executing dixon test ##
+        print('Statistical analisys - Dixon test')
+        print('\n')
+
+        conidence_interval = getDixonConfidenceInterval ()
+        dixon_data_set = dixonTest(data_set, confidence_interval)
+        print('\n')
+
+        ## Executing Students T test ##
+        print('Statistical analisys - Students T test')
+        confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
+        comparable = getFloat('Enter the comparable: ')
+        Ttest(dixon_data_set, comparable, confidence_interval)
+
+    elif select_option == 3:
+        
+
+
+
 
 def honeyMenu ():
     from Statistic import dixonTest, Ttest
@@ -104,7 +178,6 @@ def waterMenu ():
             result = alcalinity(H2SO4_concentration, H2SO4_fc, phenolphthalein, methyl_orange, water)
             data_set.append(result)
         
-        print(data_set)
         
         system('clear')
         ## Statistical analysis
@@ -304,8 +377,3 @@ def waterMenu ():
         confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
         comparable = getFloat('Enter the comparable: ')
         Ttest(dixon_data_set, comparable, confidence_interval)
-
-
-
-
-
