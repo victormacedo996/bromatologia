@@ -30,44 +30,45 @@ def dixonTest (data_set, confidence_interval):
                     10: 0.568}
             
             }
-    data_set.sort()
+    data_set_aux = []
+    data_set_aux = data_set
+    data_set_aux.sort()
 
     ## Dixon's test equation
-    if (data_set[-1] - data_set[0]) == 0:
+    if (data_set_aux[-1] - data_set_aux[0]) == 0:
         print('Cannot divide by zero, passing trought')
         pass
     else:
-        Qmax = abs((data_set[-1] - data_set[-2]) / (data_set[-1] - data_set[0]))
-        Qmin = abs((data_set[0] - data_set[1]) / (data_set[-1] - data_set[0]))
+        Qmax = abs((data_set_aux[-1] - data_set_aux[-2]) / (data_set_aux[-1] - data_set_aux[0]))
+        Qmin = abs((data_set_aux[0] - data_set_aux[1]) / (data_set_aux[-1] - data_set_aux[0]))
 
         ## Modifying the data
-        if Qmax > dixon_table[confidence_interval][len(data_set)]:
-            print('Reject máx value')
-            del data_set[-1]
-        elif Qmin > dixon_table[confidence_interval][len(data_set)]:
-            print('Reject min value')
-            del data_set[0]
-        elif Qmax > dixon_table[confidence_interval][len(data_set)] and Qmin > dixon_table[confidence_interval][len(data_set)]:
+        if Qmax > dixon_table[confidence_interval][len(data_set_aux)] and Qmin > dixon_table[confidence_interval][len(data_set_aux)]:
             ## Print the new data set for the user
-            print('Reject min and máx value')
+            print(f"Reject min and máx value: {data_set_aux[0]} and {data_set_aux[-1]}")
+            del data_set_aux[-1]
+            del data_set_aux[0]
+            print(f"Data set: {data_set_aux}")
+        elif Qmax > dixon_table[confidence_interval][len(data_set_aux)]:
+            print(f"Reject máx value: {data_set_aux[-1]}")
+            del data_set_aux[-1]
+            print(f"Data set: {data_set_aux}")
+        elif Qmin > dixon_table[confidence_interval][len(data_set_aux)]:
+            print(f"Reject min value: {data_set_aux[0]}")
+            del data_set[0]
+            print(f"Data set: {data_set_aux}")
 
     print('\n')
     
-    number_of_observations = len(data_set)
-    mean = sum (data_set) / number_of_observations
-
-    
-    sum_of_squared_deviation = 0
-    for i in data_set:
-        sum_of_squared_deviation += (i - mean)**2
-
-    standard_derivation = ((sum_of_squared_deviation)/number_of_observations)**0.5
+    from statistics import mean, stdev
+    mean = mean(data_set_aux)
+    standard_derivation = stdev(data_set_aux)
 
     print(f"Mean: {mean}")
     print(f"Standard derivation +/- {standard_derivation}")
     
     
-    return data_set
+    return data_set_aux
 
 def Ttest (data_set, comparable, confidence_interval):
     """
@@ -78,6 +79,6 @@ def Ttest (data_set, comparable, confidence_interval):
     t_stat, p_value = stats.ttest_1samp(data_set, comparable, axis = 0)
     print(f"P-Value: {p_value}  T-Statistic: {t_stat}")
     if p_value < (1 - confidence_interval):
-        print('Equal numbers')
+        print('Reject H0')
     else:
-        print('Different numbers')
+        print('Do not reject H0')
