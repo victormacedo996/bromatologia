@@ -4,9 +4,9 @@ def lactose (fehlings_title, milk_solution_percentage, solution_spent):
     """
     This function return the percentage of lactose
     """
-    inverted_sugar = getPercentage(fehlings_title, solution_spent)
-    inverted_sugar_in_100ml = getPercentage(inverted_sugar, milk_solution_percentage)
-    lactose_percentage = inverted_sugar_in_100ml * 1.39
+    inverted_sugar_in_the_expended_solution = getPercentage(fehlings_title, solution_spent)
+    percentage_of_inverted_sugar = getPercentage(inverted_sugar_in_the_expended_solution, milk_solution_percentage)
+    lactose_percentage =  percentage_of_inverted_sugar * 1.39 # 1.39 is a constant
     return lactose_percentage
 
 def acidity (NaOH_molarity, NaOH_fc, NaOH_volume_spent, milk_volume):
