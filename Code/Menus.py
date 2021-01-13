@@ -1,3 +1,4 @@
+from time import sleep
 def mainMenu ():
     from Statistic import dixonTest, Ttest
     from Essencials import getOption, getFloat, getAnswer, getInteger
@@ -140,6 +141,11 @@ def wheatFlourMenu ():
         comparable = getFloat('Enter the comparable: ')
         Ttest(dixon_data_set, comparable, confidence_interval)
         input('Press any key to back to main menu')
+
+    elif select_option < 0 or select_option > 3:
+        print('Invalid option')
+        sleep(1)
+        mainMenu()
 
 def honeyMenu ():
     from Statistic import dixonTest, Ttest
@@ -293,6 +299,11 @@ def honeyMenu ():
         comparable = getFloat('Enter the comparable: ')
         Ttest(dixon_data_set, comparable, confidence_interval)
         input('Press any key to back to main menu')
+        
+    elif select_option < 0 or select_option > 4:
+        print('Invalid option')
+        sleep(1)
+        mainMenu()
 
 def sucroseMenu ():
     from Statistic import dixonTest, Ttest
@@ -408,6 +419,11 @@ def sucroseMenu ():
         comparable = getFloat('Enter the comparable: ')
         Ttest(dixon_data_set, comparable, confidence_interval)
         input('Press any key to back to main menu')
+
+    elif select_option < 0 or select_option > 3:
+        print('Invalid option')
+        sleep(1)
+        mainMenu()
 
 def waterMenu ():
     from Statistic import dixonTest, Ttest
@@ -661,3 +677,7 @@ def waterMenu ():
         comparable = getFloat('Enter the comparable: ')
         Ttest(dixon_data_set, comparable, confidence_interval)
         input('Press any key to back to main menu')
+    elif select_option < 0 or select_option > 6:
+        print('Invalid option')
+        sleep(1)
+        mainMenu()
