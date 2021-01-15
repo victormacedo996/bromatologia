@@ -16,6 +16,8 @@
 1. [Credits](#Credits)
 1. [License](#License)
 1. [Cite](#Cite)
+    1. [Json-meta-data](#Json-meta-data)
+    1. [BibTex Export](#BibTex-export)
 1. [References](#References)
 
 [![DOI](https://zenodo.org/badge/325292822.svg)](https://zenodo.org/badge/latestdoi/325292822)
@@ -165,7 +167,7 @@ The license intend to allow users and developers to share the software with or w
 
 ### Cite
 
-#### Json meta data
+#### Json-meta-data
 ```Json
 {
     "description": "<p>Initial release of the food analytics software</p>", 
@@ -192,6 +194,22 @@ The license intend to allow users and developers to share the software with or w
             "relation": "isVersionOf"
         }
     ]
+}
+```
+
+#### BibTex-export
+
+```BibTex
+@software{victor_macedo_2021_4443096,
+  author       = {Victor Macedo},
+  title        = {{victormacedo996/food-analytics: Food analytics 
+                   initial version}},
+  month        = jan,
+  year         = 2021,
+  publisher    = {Zenodo},
+  version      = {v0.1.0},
+  doi          = {10.5281/zenodo.4443096},
+  url          = {https://doi.org/10.5281/zenodo.4443096}
 }
 ```
 [Back to the top](#Table-of-content)
