@@ -107,8 +107,6 @@ After the input of the data we are displayed the Dixon's test menu to choose the
 
 When we inputed the Dixon's confidence interval the Dixon's test is applied to the data we inputed and if there is any outlier it will be removed. And then we are presented the mean of our analisys and the standard deviation. At the same page we input the confidence interval to perform the Student's T test.
 
-![StudentsTTest](https://github.com/victormacedo996/food-analytics/blob/main/Images/Tutorial/StudetsTTest.png)
-
 In this example we are gonna use the confidence interval of 95%, as the instructions tell us we need to enter `0.95` to get the 95% interval and then press `Enter`. Then we enter our comparable wich is the value we are gonna compare to the results from our sample and press `Enter`.
 
 ![FinalOutput](https://github.com/victormacedo996/food-analytics/blob/main/Images/Tutorial/FinalOutput.png)
@@ -135,9 +133,9 @@ Authors:
 ### License
 The license intend to allow users and developers to share the software with or without the souce code, use for comercial, private and academic use and change the source code. 
 
-But it cannot be monetized or marketed and if it is used in any kind of academic work it has to be cited.
+* But it cannot be monetized or marketed and if it is used in any kind of academic work it has to be cited.
 
-The author and contributors doesn't have any responsibility in the use of the software and give no warranty.
+* The author and contributors doesn't have any responsibility in the use of the software and give no warranty.
 
 [Check the full license](https://github.com/victormacedo996/food-analytics/blob/main/LICENSE)
 
