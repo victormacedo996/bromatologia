@@ -1,8 +1,8 @@
 from time import sleep
 def mainMenu ():
     from Statistic import dixonTest, Ttest
-    from Essencials import getOption, getFloat, getAnswer, getInteger
-    from Essencials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
+    from Essentials import getOption, getFloat, getAnswer, getInteger
+    from Essentials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
     from os import system
     """
     Function to print the main menu of the program
@@ -15,8 +15,8 @@ def mainMenu ():
     
 def wheatFlourMenu ():
     from Statistic import dixonTest, Ttest
-    from Essencials import getOption, getFloat, getAnswer, getInteger
-    from Essencials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
+    from Essentials import getOption, getFloat, getAnswer, getInteger
+    from Essentials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
     from os import system
     from Flour import fixedMineralWaste, acidity, protein
     """
@@ -149,8 +149,8 @@ def wheatFlourMenu ():
 
 def honeyMenu ():
     from Statistic import dixonTest, Ttest
-    from Essencials import getOption, getFloat, getAnswer, getInteger
-    from Essencials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
+    from Essentials import getOption, getFloat, getAnswer, getInteger
+    from Essentials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
     from os import system
     from Honey import invertedSugar, sucrose, acidity, formolIndex
     """
@@ -307,8 +307,8 @@ def honeyMenu ():
 
 def sucroseMenu ():
     from Statistic import dixonTest, Ttest
-    from Essencials import getOption, getFloat, getAnswer, getInteger
-    from Essencials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
+    from Essentials import getOption, getFloat, getAnswer, getInteger
+    from Essentials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
     from os import system
     from Sucrose import sucroseByPolarimetry, icumsaColour, sucrosePercentage
     """
@@ -427,8 +427,8 @@ def sucroseMenu ():
 
 def waterMenu ():
     from Statistic import dixonTest, Ttest
-    from Essencials import getOption, getFloat, getAnswer, getInteger
-    from Essencials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
+    from Essentials import getOption, getFloat, getAnswer, getInteger
+    from Essentials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
     from os import system
     """
     Function to print the menu for the menu for the water analysis
@@ -455,7 +455,7 @@ def waterMenu ():
         print('\n')
 
         ## Getting constants ##
-        from Essencials import getFloat
+        from Essentials import getFloat
         H2SO4_concentration = getFloat ('Enter the H2SO4 molarity: ')
         H2SO4_fc = getFloat ('Enter the H2SO4 correction factor: ')
         water = getFloat('Enter the water volume used: ')
