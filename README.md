@@ -75,39 +75,39 @@ After installing Python and the SciPy library just download this souce code and 
 
 When you execute the `Main.py` file a `Terminal` or `CMD` will pop up presenting the program main menu:
 
-![MainMenu](path to the picture)
+![MainMenu](https://github.com/victormacedo996/food-analytics/blob/main/Images/Tutorial/MainMenu.png)
 
 
 
 In the main menu you need to type the food you want to analyse and press enter, for this quick tutorial we are gonna select the water analysis. After pressing `4` and hitted `Enter` the program will display the water menu for us:
 
-![WaterMenu](path to the picture)
+![WaterMenu](https://github.com/victormacedo996/food-analytics/blob/main/Images/Tutorial/WaterMenu.png)
 
 In this menu we just need to choose what analisys we want, for this exemple we will choose the chloride analisys, just pressing `5` and them `Enter`. After this the program will ask us for some data we collect in the lab:
 
 * AgNO3 molarity:
-![AgNO3Molarity](path to the picture)
+![AgNO3Molarity](https://github.com/victormacedo996/food-analytics/blob/main/Images/Tutorial/AgNO3Molarity.png)
 
 * AgNO3 correction factor:
-![AgNO3CorrectionFactor](path to the picture)
+![AgNO3CorrectionFactor](https://github.com/victormacedo996/food-analytics/blob/main/Images/Tutorial/AgNO3CorrectionFactor.png)
 
 * Sample volume (in ml):
-![SampleVolume](path to the picture)
+![SampleVolume](https://github.com/victormacedo996/food-analytics/blob/main/Images/Tutorial/SampleVolume.png)
 
 * Volume of AgNO3 spent in every sample. We need at least 3 samples and a maximum of 10. In this example we are gonna input only 3 datas:
-![AgNO3Spent](path to the picture)
+![AgNO3Spent](https://github.com/victormacedo996/food-analytics/blob/main/Images/Tutorial/AgNO3Spent.png)
 
 After the input of the data we are displayed the Dixon's test menu to choose the confidence interval of the test. For this example we are gonna use the 90% confidence interval pressing `1` and them `Enter`:
 
-![DixonTestMenu](path to the picture)
+![DixonTestMenu](https://github.com/victormacedo996/food-analytics/blob/main/Images/Tutorial/DixonTestMenu.png)
 
 When we inputed the Dixon's confidence interval the Dixon's test is applied to the data we inputed and if there is any outlier it will be removed. And then we are presented the mean of our analisys and the standard deviation. At the same page we input the confidence interval to perform the Student's T test.
 
-![StudentsTTest](path to the picture)
+![StudentsTTest](https://github.com/victormacedo996/food-analytics/blob/main/Images/Tutorial/StudetsTTest.png)
 
 In this example we are gonna use the confidence interval of 95%, as the instructions tell us we need to enter `0.95` to get the 95% interval and then press `Enter`. Then we enter our comparable wich is the value we are gonna compare to the results from our sample and press `Enter`.
 
-![FinalOutput](path to the picture)
+![FinalOutput](https://github.com/victormacedo996/food-analytics/blob/main/Images/Tutorial/FinalOutput.png)
 
 This is the final output of the program it tells us the P-value and the T-statistic of the Student's T test and the message `Reject H0` wich means that we reject the hypotesis that our water has too much chloride. Now we can press any key to bring us back to the main menu to perform another analisys or to exit the program.
 
@@ -135,7 +135,7 @@ But it cannot be monetized or marketed and if it is used in any kind of academic
 
 The author and contributors doesn't have any responsibility in the use of the software and give no warranty.
 
-[Check the full license](path_to_license)
+[Check the full license](https://github.com/victormacedo996/food-analytics/blob/main/LICENSE)
 
 [Back to the top](#Table-of-content)
 
