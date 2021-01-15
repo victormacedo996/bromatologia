@@ -13,6 +13,11 @@
 1. [Contribute](#Contributing)
 1. [Credits](#Credits)
 1. [License](#License)
+1. [Cite](#Cite)
+1. [References](#References)
+
+[![DOI](https://zenodo.org/badge/325292822.svg)](https://zenodo.org/badge/latestdoi/325292822)
+
 
 ### Description
 This is a piece of software to help food scientists in their everyday lab routine.
@@ -139,6 +144,39 @@ The license intend to allow users and developers to share the software with or w
 
 [Check the full license](https://github.com/victormacedo996/food-analytics/blob/main/LICENSE)
 
+[Back to the top](#Table-of-content)
+
+### Cite
+
+#### Json meta data
+```Json
+{
+    "description": "<p>Initial release of the food analytics software</p>", 
+    "license": "other-open", 
+    "title": "victormacedo996/food-analytics: Food analytics initial version", 
+    "version": "v0.1.0", 
+    "upload_type": "software", 
+    "publication_date": "2021-01-15", 
+    "creators": [
+        {
+            "name": "Victor Macedo"
+        }
+    ], 
+    "access_right": "open", 
+    "related_identifiers": [
+        {
+            "scheme": "url", 
+            "identifier": "https://github.com/victormacedo996/food-analytics/tree/v0.1.0", 
+            "relation": "isSupplementTo"
+        }, 
+        {
+            "scheme": "doi", 
+            "identifier": "10.5281/zenodo.4443095", 
+            "relation": "isVersionOf"
+        }
+    ]
+}
+```
 [Back to the top](#Table-of-content)
 
 ### References
