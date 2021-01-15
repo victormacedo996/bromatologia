@@ -2,6 +2,7 @@
 
 ### Table-of-content
 1. [Description](#Description)
+1. [Food analysis](#Food-analysis)
     1. [Wheat Flour](#Wheat-Flour)
     1. [Honey](#Honey)
     1. [Meet and Meet products](#Meet-and-meet-products)
@@ -11,6 +12,7 @@
 1. [Instalation](#Instalation)
 1. [Usage](#Usage)
 1. [Contribute](#Contributing)
+1. [Yet to come](#Yet-to-come)
 1. [Credits](#Credits)
 1. [License](#License)
 1. [Cite](#Cite)
@@ -20,8 +22,11 @@
 
 
 ### Description
-This is a piece of software to help food scientists in their everyday lab routine.
-At this point the program can calculate:
+This is a piece of software to help food scientists in their everyday lab routine. If you want more information about the program, check the [Wiki](https://github.com/victormacedo996/food-analytics/wiki)
+
+### Food-analsis
+The program can calculate:
+
 #### Wheat-Flour:
 * Fixed Mineral Waste percentage in dry sample
 * Acidity in mg of KOH in 100g of sample
@@ -126,6 +131,18 @@ There are a lot of ways to contribute with the project:
 * Use the program and report bug
 * Suggest new calculation methods and/or foods
 * [For programmers](path_to_another_.md)
+
+### Yet-to-come
+- [x] [Wheat Flour](#Wheat-Flour)
+- [x] [Honey](#Honey)
+- [x] [Meet and Meet products](#Meet-and-meet-products)
+- [x] [Milk](#Milk)
+- [x] [Sucrose](#Sucrose)
+- [x] [Water](#Water)
+- [ ] Meet and meet products
+- [ ] Fats and oils
+
+[Back to the top](#Table-of-content)
 
 ### Credits
 
