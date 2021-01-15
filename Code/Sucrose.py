@@ -1,4 +1,4 @@
-from Essencials import getPercentage
+from Essentials import getPercentage
 def sucroseByPolarimetry (alfa, volume, tube_length, solution_concentration):
     """
     Function to calculate the % of sucrose in the analysed sucrose via polarimetry

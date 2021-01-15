@@ -1,4 +1,4 @@
-from Essencials import getPercentage
+from Essentials import getPercentage
 
 def alcalinity (H2SO4_concentration, H2SO4_fc, volume_spent_with_phenolphthalein, volume_spent_with_methyl_orange, water_volume_used):
     """

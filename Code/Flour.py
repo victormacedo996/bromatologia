@@ -1,4 +1,4 @@
-from Essencials import getPercentage
+from Essentials import getPercentage
 def fixedMineralWaste (crucible_tare, sample_weight, weight_after_calcination, sample_humidity):
     """
     Function to calculate the fixed mineral waste
@@ -8,13 +8,13 @@ def fixedMineralWaste (crucible_tare, sample_weight, weight_after_calcination, s
     FMW_percentage_in_dry_sample = getPercentage(FMW_in_100g, 100 - sample_humidity)
     return FMW_percentage_in_dry_sample
 
-def acidity (flour_solution_percentage, volume_of_flour_solution_used, volume_of_NaOH_spent, NaOH_molarity, NaOH_fc, sample_humidity):
+def acidity (flour_solution_percentage, volume_of_flour_solution_used, volume_of_NaOH_spent, NaOH_molarity, NaOH_fc):
     """
     Function to calculate the flour acidity in KOH/100g
     """
-    quantity_of_sample = flour_solution_percentage / volume_of_flour_solution_used
+    quantity_of_sample = (flour_solution_percentage *  volume_of_flour_solution_used) / 100
     NaOH_mols_spent = volume_of_NaOH_spent * NaOH_molarity * NaOH_fc
-    mass_of_KOH_mg = NaOH_mols_spent * 56 ## 56 is a constant
+    mass_of_KOH_mg = NaOH_mols_spent * 56 ## 56 is the molecular weight of KOH
     KOH_in_100g_of_sample = getPercentage (mass_of_KOH_mg, quantity_of_sample)
     return KOH_in_100g_of_sample
 

@@ -1,6 +1,7 @@
 def getFloat (Float):
     """
     Float input verification
+    usage: x = getFloat ('mensage to display ')
     """
     while True:
         try:
@@ -12,6 +13,7 @@ def getFloat (Float):
 def getInteger (Interger):
     """
     Integer input verification
+    usage: x = getInterger ('mensage to display ')
     """
     while True:
         try:
@@ -23,6 +25,8 @@ def getInteger (Interger):
 def getPercentage (times100, divisor):
     """
     Function to get percentages
+    usage: x = getPercentage(5, 10)
+    x = 50
     """
     percentage = (times100 * 100) / divisor
     return percentage
@@ -30,6 +34,7 @@ def getPercentage (times100, divisor):
 def getAnswer (answer):
     """
     Function to get YES or NO answer from the user
+    usage: x = getAnswer('mensage to display ')
     """
     while True:
         user_input = input(answer).lower()
@@ -38,27 +43,11 @@ def getAnswer (answer):
         else:
             return user_input
 
-def getSample ():
-    """
-    Function to get the users input and create a data set
-    """
-    data_set = []
-    while True:
-        sample = getFloat ('Enter sample: ')
-        data_set.append(sample)
-        answer = getAnswer ('Do you want to add another sample? (Y/N): ')
-        if answer == 'y':
-            pass
-        else:
-            break
-        if len(data) == 10:
-            break
-
-    return data_set
-
 def getOption (list_of_options):
     """
     Function to verify the option input of the user to navigate throught the menus
+    usage: x = getOption (list)
+    user's input must be in range of list
     """
     while True:
         try:
@@ -73,6 +62,9 @@ def getOption (list_of_options):
             print('You must enter a integer number')
 
 def getDixonConfidenceInterval ():
+    """
+    Usage: getDixonConfidenceInterval()
+    """
     print('Dixons confidence intervals:')
     print("""
             1. 90%
@@ -99,6 +91,7 @@ def getDixonConfidenceInterval ():
 def displayOptions(option_list):
     """
     Function to print the options for the menus contained in a list
+    usage: displayOptions(list)
     """
     for item in option_list:
         if item == 'Exit' or item == 'Back to main menu':
@@ -109,7 +102,7 @@ def displayOptions(option_list):
 def getOneSample (question_to_ask):
     """
     This function return a lists with the users input
-    usage: x  = getTwoSamples ('question')
+    usage: x  = getOneSamples ('question')
     """
     i = 1 ## Counting variable
     answer = 'y'

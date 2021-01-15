@@ -1,4 +1,4 @@
-from Essencials import getPercentage
+from Essentials import getPercentage
 
 def fatPercentage (tactobutirometer_reading, sample_weight):
     """

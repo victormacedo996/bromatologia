@@ -1,7 +1,7 @@
-from Essencials import getOption, getInteger
+from Essentials import getOption, getInteger
 from time import sleep
 from os import system
-from Menus import mainMenu, waterMenu, wheatFlourMenu, honeyMenu
+from Menus import mainMenu, waterMenu, wheatFlourMenu, honeyMenu, sucroseMenu
 
 while True:
     mainMenu()

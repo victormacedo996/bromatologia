@@ -1,4 +1,4 @@
-from Essencials import getPercentage
+from Essentials import getPercentage
 
 def lactose (fehlings_title, milk_solution_percentage, solution_spent):
     """
@@ -6,7 +6,7 @@ def lactose (fehlings_title, milk_solution_percentage, solution_spent):
     """
     inverted_sugar_in_the_expended_solution = getPercentage(fehlings_title, solution_spent)
     percentage_of_inverted_sugar = getPercentage(inverted_sugar_in_the_expended_solution, milk_solution_percentage)
-    lactose_percentage =  percentage_of_inverted_sugar * 1.39 # 1.39 is a constant
+    lactose_percentage =  percentage_of_inverted_sugar * 1.39 # 1.39 is the convertion factor of glicose for lactose
     return lactose_percentage
 
 def acidity (NaOH_molarity, NaOH_fc, NaOH_volume_spent, milk_volume):
