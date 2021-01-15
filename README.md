@@ -2,7 +2,7 @@
 
 ### Table-of-content
 1. [Description](#Description)
-    1. [1.1 Wheat Flour](#Wheat-Flour)
+    1. [Wheat Flour](#Wheat-Flour)
     1. [Honey](#Honey)
     1. [Meet and Meet products](#Meet-and-meet-products)
     1. [Milk](#Milk)
@@ -86,15 +86,19 @@ In the main menu you need to type the food you want to analyse and press enter, 
 In this menu we just need to choose what analisys we want, for this exemple we will choose the chloride analisys, just pressing `5` and them `Enter`. After this the program will ask us for some data we collect in the lab:
 
 * AgNO3 molarity:
+
 ![AgNO3Molarity](https://github.com/victormacedo996/food-analytics/blob/main/Images/Tutorial/AgNO3Molarity.png)
 
 * AgNO3 correction factor:
+
 ![AgNO3CorrectionFactor](https://github.com/victormacedo996/food-analytics/blob/main/Images/Tutorial/AgNO3CorrectionFactor.png)
 
 * Sample volume (in ml):
+
 ![SampleVolume](https://github.com/victormacedo996/food-analytics/blob/main/Images/Tutorial/SampleVolume.png)
 
 * Volume of AgNO3 spent in every sample. We need at least 3 samples and a maximum of 10. In this example we are gonna input only 3 datas:
+
 ![AgNO3Spent](https://github.com/victormacedo996/food-analytics/blob/main/Images/Tutorial/AgNO3Spent.png)
 
 After the input of the data we are displayed the Dixon's test menu to choose the confidence interval of the test. For this example we are gonna use the 90% confidence interval pressing `1` and them `Enter`:
