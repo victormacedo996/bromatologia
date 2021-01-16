@@ -20,7 +20,7 @@
     1. [BibTex Export](#BibTex-export)
 1. [References](#References)
 
-[![DOI](https://zenodo.org/badge/325292822.svg)](https://zenodo.org/badge/latestdoi/325292822)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4443096.svg)](https://doi.org/10.5281/zenodo.4443096)
 
 
 ### Description
