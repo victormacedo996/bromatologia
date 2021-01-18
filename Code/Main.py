@@ -1,7 +1,7 @@
 from Essentials import getInteger
 from time import sleep
 from os import system
-from Menus import mainMenu, waterMenu, wheatFlourMenu, honeyMenu, sucroseMenu, licenseMenu
+from Menus import mainMenu, waterMenu, wheatFlourMenu, honeyMenu, sucroseMenu, licenseMenu, OilsMenu
 
 while True:
     mainMenu()
@@ -23,6 +23,9 @@ while True:
             waterMenu ()
 
         elif food_choice == 5:
+            OilsMenu()
+            
+        elif food_choice == 6:
             licenseMenu()
             
         else:

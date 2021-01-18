@@ -141,8 +141,8 @@ There are a lot of ways to contribute with the project:
 - [x] [Milk](#Milk)
 - [x] [Sucrose](#Sucrose)
 - [x] [Water](#Water)
-- [ ] Fats and oils
-- [ ] Transation to Pt-BR
+- [x] Fats and oils
+- [ ] Translation to Pt-BR
 
 [Back to the top](#Table-of-content)
 

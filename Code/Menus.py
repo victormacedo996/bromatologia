@@ -10,7 +10,7 @@ def mainMenu ():
     system('clear')
     print('Welcome to the FOOD ANALITYCS!')
     print('Foods that can be analysed:')
-    options = ['Wheat flour', 'Honey', 'Sucrose', 'Water', 'Check license' ,'Exit']
+    options = ['Wheat flour', 'Honey', 'Sucrose', 'Water', 'Oils', 'Check license' ,'Exit']
     displayOptions(options)
     
 def wheatFlourMenu ():
@@ -645,6 +645,9 @@ def waterMenu ():
 
     ## Condition to calculate the consumed oxigen ##
     elif select_option == 6:
+        system('clear')
+        print('Oxigen consumed selected')
+        print('\n')
         from Water import consumedOxigen
         ## Getting constants ##
         sample_volume = getFloat('Enter the sample volume: ')
@@ -667,6 +670,7 @@ def waterMenu ():
             data_set.append(result)
 
         ## Executing Dixon test ##
+        system('clear')
         print('Statistical analysis - Dixon test')
         confidence_interval = getDixonConfidenceInterval ()
         dixon_data_set = dixonTest (data_set, confidence_interval)
@@ -682,7 +686,163 @@ def waterMenu ():
         sleep(1)
         mainMenu()
 
+def OilsMenu ():
+    from Statistic import dixonTest, Ttest
+    from Essentials import getFloat, getAnswer, getInteger
+    from Essentials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
+    from os import system
+    """
+    Function to print the oils menu option
+    """
+    system('clear')
+    print('Fat and oils selected')
+    print('Wich parameter do you want to analyse?')
+    options = ['Acidity index', 'Saponification index', 'Iodine index', 'Peroxide index',
+    'Back to main menu']
+
+    displayOptions(options)
+    select_option = getInteger ('Choose the analysis: ')
+    if select_option == False:
+        mainMenu()
+    elif select_option == 1:
+        system('clear')
+        print('Acidity selected')
+        print('\n')
+        from Oils import acidityIndex
+        ## Getting constants
+        NaOH_molarity = getFloat('Enter the NaOH molarity: ')
+        NaOH_fc = getFloat('Enter the correction factor for the NaOH:')
+        ## Getting variables
+        NaOH_spent, sample_weight = getTwoSamples('volume of NaOH spent', 'mass of the sample')
+        data_set = []
+        for NaOH, mass in zip(NaOH_spent, sample_weight):
+            acidity_index = acidityIndex(mass, NaOH_molarity, NaOH_fc, NaOH)
+            data_set.append(acidity_index)
+
+        ## Executing Dixon test ##
+        system('clear')
+        print('Statistical analysis - Dixon test')
+        confidence_interval = getDixonConfidenceInterval ()
+        print('\n')
+        print('mg of acid in 100g of sample')
+        mg_of_acid = dixonTest (list(item[0] for item in data_set), confidence_interval)
+        print('\n')
+        print('Acidity index (mg of KOH in 1g of sample)')
+        acidity = dixonTest(list(item[1] for item in data_set), confidence_interval)
+
+        ## Executing Students T test ##
+        print('\n')
+        print('Statistical analysis - Students T test')
+        confidence_interval_mg_of_acid = getFloat('Enter the confidence interval for mg of acid in 100g of sample (ex: 95% = 0.95): ')
+        comparable_mg_of_acid = getFloat('Enter the comparable for mg of acid in 100g of sample: ')
+        print('\n')
+        confidence_interval_acidity_index = getFloat('Enter the confidence interval for acidity index (ex: 95% = 0.95): ')
+        comparable_acidity_index = getFloat('Enter the comparable for acidity index: ')
+        print('\n')
+        print('T test for mg of acid in 100g of sample')
+        Ttest(mg_of_acid, comparable_mg_of_acid, confidence_interval_mg_of_acid)
+        print('\n')
+        print('T test for acidity index')
+        Ttest(acidity, comparable_acidity_index, confidence_interval_acidity_index)
+
+
+        input('Press any key to back to main menu')
+
+    elif select_option == 2:
+        system('clear')
+        print('Saponification index selected')
+        print('\n')
+        from Oils import saponificationIndex
+        ## Getting constants
+        HCl_molarity = getFloat('Enter the HCl molarity: ')
+        HCl_fc = getFloat('Enter the correction factor for the HCl: ')
+        blank_volume = getFloat('Enter the blank volume: ')
+        ## Getting variables
+        HCl_spent, sample_weight = getTwoSamples('HCl spent', 'Sample weight')
+        data_set = []
+        for HCl, mass in zip(HCl_spent, sample_weight):
+            saponification_index = saponificationIndex(mass, HCl_molarity, HCl_fc, HCl, blank_volume)
+            data_set.append(saponification_index)
+
+        ## Executing Dixon test ##
+        system('clear')
+        print('Statistical analysis - Dixon test')
+        confidence_interval = getDixonConfidenceInterval ()
+        dixon_data_set = dixonTest (data_set, confidence_interval)
+
+        ## Executing Students T test ##
+        print('Statistical analysis - Students T test')
+        confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
+        comparable = getFloat('Enter the comparable: ')
+        Ttest(dixon_data_set, comparable, confidence_interval)
+        input('Press any key to back to main menu')
+
+    elif select_option == 3:
+        system('clear')
+        print('Iodine index selected')
+        print('\n')
+        from Oils import iodineIndex
+        ## Getting constants
+        Na2S2O3_molarity = getFloat('Enter Na2S2O3 molarity: ')
+        Na2S2O3_fc = getFloat('Enter Na2S2O3 correction factor: ')
+        blank_volume = getFloat('Enter the blank volume: ')
+        ## Getting variables
+        sample_weight, Na2S2O3_volume_spent = getTwoSamples('Sample weight', 'Na2S2O3 volume spent')
+        data_set = []
+        for mass, Na2S2O3 in zip(sample_weight, Na2S2O3_volume_spent):
+            iodine_index = iodineIndex (Na2S2O3_molarity, Na2S2O3_fc, Na2S2O3, blank_volume, mass)
+            data_set.append(iodine_index)
+        
+        ## Executing Dixon test ##
+        system('clear')
+        print('Statistical analysis - Dixon test')
+        confidence_interval = getDixonConfidenceInterval ()
+        dixon_data_set = dixonTest (data_set, confidence_interval)
+
+        ## Executing Students T test ##
+        print('Statistical analysis - Students T test')
+        confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
+        comparable = getFloat('Enter the comparable: ')
+        Ttest(dixon_data_set, comparable, confidence_interval)
+        input('Press any key to back to main menu')
+
+    elif select_option == 4:
+        system('clear')
+        print('Peroxide index selected')
+        print('\n')
+        from Oils import peroxideIndex
+        ## Geting constants
+        Na2S2O3_molarity = getFloat('Enter the Na2S2O3 molarity: ')
+        Na2S2O3_fc = getFloat('Enter the correction factor for the Na2S2O3: ')
+        blank_volume = getFloat('Enter the blank volume: ')
+        ## Getting variables
+        sample_weight, Na2S2O3_volume_spent = getTwoSamples('Sample weight', 'Na2S2O3 volume spent')
+        data_set = []
+        for mass, Na2S2O3 in zip(sample_weight, Na2S2O3_volume_spent):
+            peroxide_index = peroxideIndex(Na2S2O3_molarity, Na2S2O3_fc, Na2S2O3, blank_volume, mass)
+            data_set.append(peroxide_index)
+
+        ## Executing Dixon test ##
+        system('clear')
+        print('Statistical analysis - Dixon test')
+        confidence_interval = getDixonConfidenceInterval ()
+        dixon_data_set = dixonTest (data_set, confidence_interval)
+
+        ## Executing Students T test ##
+        print('Statistical analysis - Students T test')
+        confidence_interval = getFloat('Enter the confidence interval (ex: 95% = 0.95): ')
+        comparable = getFloat('Enter the comparable: ')
+        Ttest(dixon_data_set, comparable, confidence_interval)
+        input('Press any key to back to main menu')
+        
+    elif select_option < 0 or select_option > 4:
+        print('Invalid option')
+        sleep(1)
+        mainMenu()
+
 def licenseMenu():
+    from os import system
+    system('clear')
     print("""
         Copyright (c) 2020 Victor Macedo
 
