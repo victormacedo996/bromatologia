@@ -5,7 +5,7 @@
 1. [Food analysis](#Food-analysis)
     1. [Wheat Flour](#Wheat-Flour)
     1. [Honey](#Honey)
-    1. [Meet and Meet products](#Meet-and-meet-products)
+    1. [Meat and Meat products](#Meat-and-meat-products)
     1. [Milk](#Milk)
     1. [Sucrose](#Sucrose)
     1. [Water](#Water)
@@ -15,7 +15,7 @@
 1. [Yet to come](#Yet-to-come)
 1. [Credits](#Credits)
 1. [License](#License)
-1. [Cite](#Cite)
+1. [How to cite](#How-to-cite)
     1. [Json-meta-data](#Json-meta-data)
     1. [BibTex Export](#BibTex-export)
 1. [References](#References)
@@ -44,7 +44,7 @@ The program can calculate:
 
 [Back to the top](#Table-of-content)
 
-#### Meet-and-meet-products:
+#### Meat-and-meat-products:
 * Fat percentage
 
 [Back to the top](#Table-of-content)
@@ -137,19 +137,19 @@ There are a lot of ways to contribute with the project:
 ### Yet-to-come
 - [x] [Wheat Flour](#Wheat-Flour)
 - [x] [Honey](#Honey)
-- [x] [Meet and Meet products](#Meet-and-meet-products)
+- [x] [Meet and Meet products](#Meat-and-meat-products)
 - [x] [Milk](#Milk)
 - [x] [Sucrose](#Sucrose)
 - [x] [Water](#Water)
-- [ ] Meet and meet products
 - [ ] Fats and oils
+- [ ] Transation to Pt-BR
 
 [Back to the top](#Table-of-content)
 
 ### Credits
 
 Authors:
-1. [Victor Macedo (Author)](https://github.com/victormacedo996/)
+1. [Victor Macedo (Lead author)](https://github.com/victormacedo996/)
     * [Curriculum](http://lattes.cnpq.br/0770800475582252)
 
 [Back to the top](#Table-of-content)
@@ -165,7 +165,7 @@ The license intend to allow users and developers to share the software with or w
 
 [Back to the top](#Table-of-content)
 
-### Cite
+### How-to-cite
 
 #### Json-meta-data
 ```Json
