@@ -137,7 +137,7 @@ There are a lot of ways to contribute with the project:
 ### Yet-to-come
 - [x] [Wheat Flour](#Wheat-Flour)
 - [x] [Honey](#Honey)
-- [x] [Meet and Meet products](#Meat-and-meat-products)
+- [x] [Meat and Meat products](#Meat-and-meat-products)
 - [x] [Milk](#Milk)
 - [x] [Sucrose](#Sucrose)
 - [x] [Water](#Water)
