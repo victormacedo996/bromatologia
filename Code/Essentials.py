@@ -43,24 +43,6 @@ def getAnswer (answer):
         else:
             return user_input
 
-def getOption (list_of_options):
-    """
-    Function to verify the option input of the user to navigate throught the menus
-    usage: x = getOption (list)
-    user's input must be in range of list
-    """
-    while True:
-        try:
-            user_input = getInteger('Enter option: ')
-            if user_input == 0:
-                return False
-            elif user_input > len(list_of_options) or user_input < len(list_of_options):
-                print('Invalid option')
-            else:
-                return user_input
-        except ValueError:
-            print('You must enter a integer number')
-
 def getDixonConfidenceInterval ():
     """
     Usage: getDixonConfidenceInterval()

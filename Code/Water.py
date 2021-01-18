@@ -54,6 +54,9 @@ def waterHardness (EDTA_standard, quantity_of_CaCO3_neutralized_by_EDTA, EDTA_mo
     return CaCO3_per_liter
 
 def totalSolubleSolids (capsule_tare, sample_volume, total_weight_after_dry):
+    """
+    This function returns the total sluble solids in mg/L of water
+    """
     sample_soluble_solids = total_weight_after_dry - capsule_tare
     soluble_solids_per_liter = getPercentage (sample_soluble_solids * 10, sample_volume)
     return soluble_solids_per_liter
@@ -64,7 +67,7 @@ def residualChlorine (Na2S2O3_molarity, Na2S2O3_fc, Na2S2O3_volume_used, sample_
     """
     Na2S2O3_mols = Na2S2O3_molarity * Na2S2O3_fc * Na2S2O3_volume_used
     chlorine_mols = Na2S2O3_mols / 2
-    sample_chlorine_grams = chlorine_mols * 70
+    sample_chlorine_grams = chlorine_mols * 70 # 70 is the molecular weight of chorine
     chlorine_grams_per_liter = getPercentage(sample_chlorine_grams * 10, sample_volume)
     return chlorine_grams_per_liter
 
@@ -73,7 +76,7 @@ def chloride (AgNO3_molarity, AgNO3_fc, AgNO3_volume_used, sample_volume):
     Function to calculate the chloride mili grams per liter
     """
     mols_of_AgNO3 = AgNO3_molarity * AgNO3_fc * AgNO3_volume_used
-    chloride_mili_grams = mols_of_AgNO3 * 35.5 # 35.5 is a constant
+    chloride_mili_grams = mols_of_AgNO3 * 35.5 # 35.5 is the molecular weight of chloride
     chloride_mili_grams_per_liter = getPercentage (chloride_mili_grams * 10, sample_volume)
     return chloride_mili_grams_per_liter
 

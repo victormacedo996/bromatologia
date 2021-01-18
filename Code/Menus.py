@@ -1,21 +1,21 @@
 from time import sleep
 def mainMenu ():
     from Statistic import dixonTest, Ttest
-    from Essentials import getOption, getFloat, getAnswer, getInteger
+    from Essentials import getFloat, getAnswer, getInteger
     from Essentials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
     from os import system
     """
     Function to print the main menu of the program
     """
     system('clear')
-    print('Welcome to the FOOD ANALYSIS CALCULATOR!')
+    print('Welcome to the FOOD ANALITYCS!')
     print('Foods that can be analysed:')
-    options = ['Wheat flour', 'Honey', 'Sucrose', 'Water', 'Exit']
+    options = ['Wheat flour', 'Honey', 'Sucrose', 'Water', 'Check license' ,'Exit']
     displayOptions(options)
     
 def wheatFlourMenu ():
     from Statistic import dixonTest, Ttest
-    from Essentials import getOption, getFloat, getAnswer, getInteger
+    from Essentials import getFloat, getAnswer, getInteger
     from Essentials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
     from os import system
     from Flour import fixedMineralWaste, acidity, protein
@@ -149,7 +149,7 @@ def wheatFlourMenu ():
 
 def honeyMenu ():
     from Statistic import dixonTest, Ttest
-    from Essentials import getOption, getFloat, getAnswer, getInteger
+    from Essentials import getFloat, getAnswer, getInteger
     from Essentials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
     from os import system
     from Honey import invertedSugar, sucrose, acidity, formolIndex
@@ -307,7 +307,7 @@ def honeyMenu ():
 
 def sucroseMenu ():
     from Statistic import dixonTest, Ttest
-    from Essentials import getOption, getFloat, getAnswer, getInteger
+    from Essentials import getFloat, getAnswer, getInteger
     from Essentials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
     from os import system
     from Sucrose import sucroseByPolarimetry, icumsaColour, sucrosePercentage
@@ -427,7 +427,7 @@ def sucroseMenu ():
 
 def waterMenu ():
     from Statistic import dixonTest, Ttest
-    from Essentials import getOption, getFloat, getAnswer, getInteger
+    from Essentials import getFloat, getAnswer, getInteger
     from Essentials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
     from os import system
     """
@@ -681,3 +681,35 @@ def waterMenu ():
         print('Invalid option')
         sleep(1)
         mainMenu()
+
+def licenseMenu():
+    print("""
+        Copyright (c) 2020 Victor Macedo
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense and to permit 
+    persons to whom the Software is furnished to do so, subject to the following 
+    conditions:
+    \n
+    """)
+    input('Press any key to proceed')
+    print("""
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    If the software is used in any kind of scientific or academic work it has to be 
+    cited properly.
+
+    This program must under no circumstances be sold or marketed. 
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+    """)
+    input('Press any key to back to main menu')
