@@ -75,6 +75,14 @@ The program can calculate:
 
 [Back to the top](#Table-of-content)
 
+### Fats-and-oils
+* Acidity index in grams of acid in 100g of sample or in mg of KOH in 1g of sample
+* Saponification index in mg of KOH per gram of sample
+* Iodine index in grams of iodine in 100g of sample
+* Peroxide index in meq per kilogram of sample
+
+[Back to the top](#Table-of-content)
+
 ### Instalation
 You will need:
 * [Python 3.x](https://www.python.org/downloads/)
