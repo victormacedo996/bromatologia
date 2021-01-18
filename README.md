@@ -9,6 +9,7 @@
     1. [Milk](#Milk)
     1. [Sucrose](#Sucrose)
     1. [Water](#Water)
+    1. [Fats and oils](#Fats-and-oils)
 1. [Instalation](#Instalation)
 1. [Usage](#Usage)
 1. [Contribute](#Contributing)
@@ -66,7 +67,7 @@ The program can calculate:
 [Back to the top](#Table-of-content)
 
 #### Water:
-* Alcalinity in mg of CaCO3 per liter of water. And the alcalinity from hidroxyde, carbonate and bicarbonate
+* Alcalinity in mg of CaCO3 per liter of water. And the alkalinity from hydroxide, carbonate and bicarbonate
 * Water hardness in mg of CaCO3 per liter of water
 * Total soluble solids per liter of water
 * Residual chlorine in grams per liter of water
