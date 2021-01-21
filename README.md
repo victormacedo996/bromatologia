@@ -9,6 +9,7 @@
     1. [Milk](#Milk)
     1. [Sucrose](#Sucrose)
     1. [Water](#Water)
+    1. [Fats and oils](#Fats-and-oils)
 1. [Instalation](#Instalation)
 1. [Usage](#Usage)
 1. [Contribute](#Contributing)
@@ -66,12 +67,20 @@ The program can calculate:
 [Back to the top](#Table-of-content)
 
 #### Water:
-* Alcalinity in mg of CaCO3 per liter of water. And the alcalinity from hidroxyde, carbonate and bicarbonate
+* Alcalinity in mg of CaCO3 per liter of water. And the alkalinity from hydroxide, carbonate and bicarbonate
 * Water hardness in mg of CaCO3 per liter of water
 * Total soluble solids per liter of water
 * Residual chlorine in grams per liter of water
 * Chloride in mg per liter of water
 * Oxigen consumed in mg per liter of water
+
+[Back to the top](#Table-of-content)
+
+### Fats-and-oils
+* Acidity index in grams of acid in 100g of sample or in mg of KOH in 1g of sample
+* Saponification index in mg of KOH per gram of sample
+* Iodine index in grams of iodine in 100g of sample
+* Peroxide index in meq per kilogram of sample
 
 [Back to the top](#Table-of-content)
 
