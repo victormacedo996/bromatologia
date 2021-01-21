@@ -73,7 +73,7 @@ def wheatFlourMenu ():
         flour_solution_percentage = getFloat ('Enter the percentage of the flour solution (ex: 10% = 10): ')
         volume_of_flour_solution_used =  getFloat ('Enter the volume of flour solution used: ')
         NaOH_molarity = getFloat ('Enter the NaOH molarity: ')
-        NaOH_fc = ('Enter the correction factor of the NaOH: ')
+        NaOH_fc = getFloat('Enter the correction factor of the NaOH: ')
         sample_humidity = ('Enter the sample humidity: ')
 
         ## Getting variable ##
@@ -81,7 +81,7 @@ def wheatFlourMenu ():
 
         data_set = []
         for item in volume_of_NaOH_spent:
-            result = acidity(flour_solution_percentage, volume_of_flour_solution_used, item, NaOH_molarity, NaOH_fc, sample_humidity)
+            result = acidity(flour_solution_percentage, volume_of_flour_solution_used, item, NaOH_molarity, NaOH_fc)
             data_set.append(result)
 
         clearScreen()
