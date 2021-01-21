@@ -1,12 +1,11 @@
-from Essentials import getInteger
+from Essentials import getInteger, clearScreen
 from time import sleep
-from os import system
 from Menus import mainMenu, waterMenu, wheatFlourMenu, honeyMenu, sucroseMenu, licenseMenu, OilsMenu
 
 while True:
     mainMenu()
     food_choice = getInteger ('Choose the food for analisys: ')
-    if food_choice > 5 or food_choice < 0:
+    if food_choice > 6 or food_choice < 0:
         print('Invalid option')
         sleep(1)
     else:
@@ -29,6 +28,7 @@ while True:
             licenseMenu()
             
         else:
+            clearScreen()
             print("""
             Thank you for using Food Analitycs!!
             Don't forget to check the repository and support the project

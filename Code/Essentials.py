@@ -156,3 +156,13 @@ def getTwoSamples (first_question_to_ask, second_question_to_ask):
                 pass
         i += 1
     return question1_set, question2_set
+
+
+def clearScreen():
+    from subprocess import call
+    from sys import platform
+    if platform not in ('win32', 'cygwin'):
+        command = 'clear'
+    else:
+        command = 'cls'
+    call(command, shell=True)

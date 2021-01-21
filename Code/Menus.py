@@ -1,13 +1,10 @@
-from time import sleep
 def mainMenu ():
-    from Statistic import dixonTest, Ttest
-    from Essentials import getFloat, getAnswer, getInteger
-    from Essentials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
-    from os import system
+    from Essentials import displayOptions, clearScreen
+    from time import sleep
     """
     Function to print the main menu of the program
     """
-    system('clear')
+    clearScreen()
     print('Welcome to the FOOD ANALITYCS!')
     print('Foods that can be analysed:')
     options = ['Wheat flour', 'Honey', 'Sucrose', 'Water', 'Oils', 'Check license' ,'Exit']
@@ -16,13 +13,12 @@ def mainMenu ():
 def wheatFlourMenu ():
     from Statistic import dixonTest, Ttest
     from Essentials import getFloat, getAnswer, getInteger
-    from Essentials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
-    from os import system
-    from Flour import fixedMineralWaste, acidity, protein
+    from Essentials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples, clearScreen
+    from time import sleep
     """
     Function to print the menu for the menu for the wheat flour analysis
     """
-    system('clear')
+    clearScreen()
     print('Wheat flour selected')
     print('Wich parameter do you want to analyse?')
     options = ['Fixed mineral waste', 'Acidity', 'Protein', 'Back to main menu']
@@ -33,7 +29,8 @@ def wheatFlourMenu ():
 
     ## Condition to calculate fixed mineral waste ##
     elif select_option == 1:
-        system('clear')
+        from Flour import fixedMineralWaste
+        clearScreen()
         print('Fixed mineral waste selected')
         print('\n')
         ## Getting constants ## 
@@ -49,7 +46,7 @@ def wheatFlourMenu ():
             result = fixedMineralWaste (crucible_tare, sample_weight, item, sample_humidity)
             data_set.append(result)
 
-        system('clear')
+        clearScreen()
         ## Executing dixon test ##
         print('Statistical analisys - Dixon test')
         print('\n')
@@ -67,7 +64,8 @@ def wheatFlourMenu ():
 
     ## Condition to calculate acidity ##
     elif select_option == 2:
-        system('clear')
+        from Flour import acidity
+        clearScreen()
         print('Acidity selected')
         print('\n')
 
@@ -86,7 +84,7 @@ def wheatFlourMenu ():
             result = acidity(flour_solution_percentage, volume_of_flour_solution_used, item, NaOH_molarity, NaOH_fc, sample_humidity)
             data_set.append(result)
 
-        system('clear')
+        clearScreen()
         ## Executing dixon test ##
         print('Statistical analisys - Dixon test')
         print('\n')
@@ -103,8 +101,9 @@ def wheatFlourMenu ():
         input('Press any key to back to main menu')
 
     elif select_option == 3:
+        from Flour import protein
         ## Codition to calculate protein ##
-        system('clear')
+        clearScreen()
         print('Protein selected')
         print('\n')
 
@@ -126,7 +125,7 @@ def wheatFlourMenu ():
             result = protein(convertion_factor, sample_humidity, sample_weight, volume_of_HCl_in_erlenmayer, HCl_molarity, HCl_fc, item, NaOH_molarity, NaOH_fc)
             data_set.append(result)
 
-        system('clear')
+        clearScreen()
         ## Executing dixon test ##
         print('Statistical analisys - Dixon test')
         print('\n')
@@ -150,13 +149,12 @@ def wheatFlourMenu ():
 def honeyMenu ():
     from Statistic import dixonTest, Ttest
     from Essentials import getFloat, getAnswer, getInteger
-    from Essentials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
-    from os import system
-    from Honey import invertedSugar, sucrose, acidity, formolIndex
+    from Essentials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples, clearScreen
+    from time import sleep
     """
     Function to print the menu for the menu for the honey analysis
     """
-    system('clear')
+    clearScreen()
     print('Honey selected')
     print('Wich parameter do you want to analyse?')
     options = ['Inverted sugar', 'Sucrose', 'Acidity', 'Formol index', 'Back to main menu']
@@ -168,7 +166,8 @@ def honeyMenu ():
 
     ## Condition to calculate inverted sugar in honey ##
     elif select_option == 1:
-        system ('clear')
+        from Honey import invertedSugar
+        clearScreen()
         print('Inverted sugar selected')
         print('\n')
 
@@ -184,7 +183,7 @@ def honeyMenu ():
             result = invertedSugar (fehlings_title, item, solution_percentage)
             data_set.append(result)
 
-        system('clear')
+        clearScreen()
         ## Executing dixon test ##
         print('Statistical analisys - Dixon test')
         print('\n')
@@ -202,7 +201,8 @@ def honeyMenu ():
 
     ## Condition to calculate sucrose in honey ##
     elif select_option == 2:
-        system('clear')
+        from Honey import sucrose
+        clearScreen()
         print('Sucrose in honey selected')
         print('\n')
 
@@ -213,7 +213,7 @@ def honeyMenu ():
             result = sucrose (item1, item2)
             data_set.append(result)
 
-        system('clear')
+        clearScreen()
         ## Executing dixon test ##
         print('Statistical analisys - Dixon test')
         print('\n')
@@ -231,7 +231,8 @@ def honeyMenu ():
 
     ## Condition to calculate acidity in Honey ##
     elif select_option == 3:
-        system('clear')
+        from Honey import acidity
+        clearScreen()
         print('Acidity in honey selected')
         print('\n')
 
@@ -249,7 +250,7 @@ def honeyMenu ():
             result = acidity (item, NaOH_molarity, NaOH_fc, honey_solution_concentration, honey_solution_volume)
             data_set.appen(result)
 
-        system('clear')
+        clearScreen()
         ## Executing dixon test ##
         print('Statistical analisys - Dixon test')
         print('\n')
@@ -267,7 +268,8 @@ def honeyMenu ():
 
     ## Condition to calculate the formol index ##
     elif select_option == 4:
-        system('clear')
+        from Honey import formolIndex
+        clearScreen()
         print('Formol index selected')
         print('\n')
 
@@ -284,7 +286,7 @@ def honeyMenu ():
             result = formolIndex (item, NaOH_molarity, NaOH_fc, grams_of_honey)
             data_set.append(result)
 
-        system('clear')
+        clearScreen()
         ## Executing dixon test ##
         print('Statistical analisys - Dixon test')
         print('\n')
@@ -308,13 +310,12 @@ def honeyMenu ():
 def sucroseMenu ():
     from Statistic import dixonTest, Ttest
     from Essentials import getFloat, getAnswer, getInteger
-    from Essentials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
-    from os import system
-    from Sucrose import sucroseByPolarimetry, icumsaColour, sucrosePercentage
+    from Essentials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples, clearScreen
+    from time import sleep
     """
     Function to print the menu for the menu for the sucrose analysis
     """
-    system('clear')
+    clearScreen()
     print('Sucrose selected')
     print('Wich parameter do you want to analyse?')
     options = ['Sucrose by polarimetry', 'ICUMSA colour', 'Sucrose by Fehlings method', 'Back to main menu']
@@ -325,7 +326,8 @@ def sucroseMenu ():
 
     ## Condition to calculate sucrose via polarimetry ##
     elif select_option == 1:
-        system('clear')
+        from Sucrose import sucroseByPolarimetry
+        clearScreen()
         print('Sucrose via polarimetry selected')
         ## Getting constants ##
         volume = getFloat('Enter the sample volume: ')
@@ -339,7 +341,7 @@ def sucroseMenu ():
             result = sucroseByPolarimetry (item, volume, tube_length, solution_concentration)
             data_set.append(result)
 
-        system('clear')
+        clearScreen()
         ## Executing dixon test ##
         print('Statistical analisys - Dixon test')
         print('\n')
@@ -356,7 +358,8 @@ def sucroseMenu ():
         input('Press any key to back to main menu')
         
     elif select_option == 2:
-        system('clear')
+        from Sucrose import icumsaColour
+        clearScreen()
         print('ICUMSA colour selected')
 
         ## Getting constants ##
@@ -371,7 +374,7 @@ def sucroseMenu ():
             result = icumsaColour (solution_concentration, item, optical_length)
             data_set.append(result)
 
-        system('clear')
+        clearScreen()
         ## Executing dixon test ##
         print('Statistical analisys - Dixon test')
         print('\n')
@@ -389,7 +392,8 @@ def sucroseMenu ():
 
     ## Condition to calculate the sucrose by Fehlings methos ##
     elif select_option == 3:
-        system('clear')
+        from Sucrose import sucrosePercentage
+        clearScreen()
         print('Sucrose by fehlings method selected')
 
         ## Getting constants ##
@@ -404,7 +408,7 @@ def sucroseMenu ():
             result = sucrosePercentage (fehlings_title, item, solution_percentage)
             data_set.append(result)
 
-        system('clear')
+        clearScreen()
         ## Executing dixon test ##
         print('Statistical analisys - Dixon test')
         print('\n')
@@ -428,12 +432,12 @@ def sucroseMenu ():
 def waterMenu ():
     from Statistic import dixonTest, Ttest
     from Essentials import getFloat, getAnswer, getInteger
-    from Essentials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
-    from os import system
+    from Essentials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples, clearScreen
+    from time import sleep
     """
     Function to print the menu for the menu for the water analysis
     """
-    system('clear')
+    clearScreen()
     print('water selected')
     print('Wich parameter do you want to analyse?')
     options = ['Alcalinity', 'Water hardness', 'Total soluble solids', 'Residual chlorine', 
@@ -450,12 +454,11 @@ def waterMenu ():
         """
         Getting the constants
         """
-        system('clear')
+        clearScreen()
         print('Water alcalinity selected')
         print('\n')
 
         ## Getting constants ##
-        from Essentials import getFloat
         H2SO4_concentration = getFloat ('Enter the H2SO4 molarity: ')
         H2SO4_fc = getFloat ('Enter the H2SO4 correction factor: ')
         water = getFloat('Enter the water volume used: ')
@@ -473,7 +476,7 @@ def waterMenu ():
             data_set.append(result)
         
         
-        system('clear')
+        clearScreen()
         ## Statistical analysis
         print('Statistical analisys - Dixon test')
         confidence_interval = getDixonConfidenceInterval ()
@@ -512,7 +515,7 @@ def waterMenu ():
     ## Condition to calculate water hardness ##
     elif select_option == 2:
         from Water import waterHardness
-        system('clear')
+        clearScreen()
         print('Water hardness selected')
         print('\n')
 
@@ -532,7 +535,7 @@ def waterMenu ():
             result = waterHardness (EDTA_standard, quantity_of_CaCO3_neutralized_by_EDTA, EDTA_molatity, EDTA_fc, item, sample_volume)
             data_set.append(result)
         
-        system('clear')
+        clearScreen()
 
         print('Statistical analisys - Dixon test')
         confidence_interval = getDixonConfidenceInterval ()
@@ -631,7 +634,7 @@ def waterMenu ():
             data_set.append(result)
 
         ## Executing Dixon test ##
-        system('clear')
+        clearScreen()
         print('Statistical analysis - Dixon test')
         confidence_interval = getDixonConfidenceInterval ()
         dixon_data_set = dixonTest (data_set, confidence_interval)
@@ -645,7 +648,7 @@ def waterMenu ():
 
     ## Condition to calculate the consumed oxigen ##
     elif select_option == 6:
-        system('clear')
+        clearScreen()
         print('Oxigen consumed selected')
         print('\n')
         from Water import consumedOxigen
@@ -670,7 +673,7 @@ def waterMenu ():
             data_set.append(result)
 
         ## Executing Dixon test ##
-        system('clear')
+        clearScreen()
         print('Statistical analysis - Dixon test')
         confidence_interval = getDixonConfidenceInterval ()
         dixon_data_set = dixonTest (data_set, confidence_interval)
@@ -689,12 +692,12 @@ def waterMenu ():
 def OilsMenu ():
     from Statistic import dixonTest, Ttest
     from Essentials import getFloat, getAnswer, getInteger
-    from Essentials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples
-    from os import system
+    from Essentials import getDixonConfidenceInterval, displayOptions, getOneSample, getTwoSamples, clearScreen
+    from time import sleep
     """
     Function to print the oils menu option
     """
-    system('clear')
+    clearScreen()
     print('Fat and oils selected')
     print('Wich parameter do you want to analyse?')
     options = ['Acidity index', 'Saponification index', 'Iodine index', 'Peroxide index',
@@ -705,7 +708,7 @@ def OilsMenu ():
     if select_option == False:
         mainMenu()
     elif select_option == 1:
-        system('clear')
+        clearScreen()
         print('Acidity selected')
         print('\n')
         from Oils import acidityIndex
@@ -720,7 +723,7 @@ def OilsMenu ():
             data_set.append(acidity_index)
 
         ## Executing Dixon test ##
-        system('clear')
+        clearScreen()
         print('Statistical analysis - Dixon test')
         confidence_interval = getDixonConfidenceInterval ()
         print('\n')
@@ -749,7 +752,7 @@ def OilsMenu ():
         input('Press any key to back to main menu')
 
     elif select_option == 2:
-        system('clear')
+        clearScreen()
         print('Saponification index selected')
         print('\n')
         from Oils import saponificationIndex
@@ -765,7 +768,7 @@ def OilsMenu ():
             data_set.append(saponification_index)
 
         ## Executing Dixon test ##
-        system('clear')
+        clearScreen()
         print('Statistical analysis - Dixon test')
         confidence_interval = getDixonConfidenceInterval ()
         dixon_data_set = dixonTest (data_set, confidence_interval)
@@ -778,7 +781,7 @@ def OilsMenu ():
         input('Press any key to back to main menu')
 
     elif select_option == 3:
-        system('clear')
+        clearScreen()
         print('Iodine index selected')
         print('\n')
         from Oils import iodineIndex
@@ -794,7 +797,7 @@ def OilsMenu ():
             data_set.append(iodine_index)
         
         ## Executing Dixon test ##
-        system('clear')
+        clearScreen()
         print('Statistical analysis - Dixon test')
         confidence_interval = getDixonConfidenceInterval ()
         dixon_data_set = dixonTest (data_set, confidence_interval)
@@ -807,7 +810,7 @@ def OilsMenu ():
         input('Press any key to back to main menu')
 
     elif select_option == 4:
-        system('clear')
+        clearScreen()
         print('Peroxide index selected')
         print('\n')
         from Oils import peroxideIndex
@@ -823,7 +826,7 @@ def OilsMenu ():
             data_set.append(peroxide_index)
 
         ## Executing Dixon test ##
-        system('clear')
+        clearScreen()
         print('Statistical analysis - Dixon test')
         confidence_interval = getDixonConfidenceInterval ()
         dixon_data_set = dixonTest (data_set, confidence_interval)
@@ -841,8 +844,9 @@ def OilsMenu ():
         mainMenu()
 
 def licenseMenu():
-    from os import system
-    system('clear')
+    
+    from Essentials import clearScreen
+    clearScreen()
     print("""
         Copyright (c) 2020 Victor Macedo
 
