@@ -159,6 +159,9 @@ def getTwoSamples (first_question_to_ask, second_question_to_ask):
 
 
 def clearScreen():
+    """
+    Function to clear terminal/cmd screen compatible with Linux and Windows
+    """
     from subprocess import call
     from sys import platform
     if platform not in ('win32', 'cygwin'):
