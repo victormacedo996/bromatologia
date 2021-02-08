@@ -30,20 +30,19 @@ def wheatFlourMenu ():
     ## Condition to calculate fixed mineral waste ##
     elif select_option == 1:
         from Flour import fixedMineralWaste
+        from Essentials import getThreeSamples
         clearScreen()
         print('Fixed mineral waste selected')
         print('\n')
         ## Getting constants ## 
-        crucible_tare = getFloat ('Enter the crucible tare: ')
-        sample_weight = getFloat ('Enter the sample weight: ')
         sample_humidity = getFloat ('Enter the sample humidity (ex: 20% = 20): ')
 
         ## Getting variable ##
-        weight_after_calcination = getOneSample ('weight after calcination')
+        weight_after_calcination, crucible_tare, sample_weight = getThreeSamples('weight_after_calcination', 'crucible_tare', 'sample_weight')
 
         data_set = []
-        for item in weight_after_calcination:
-            result = fixedMineralWaste (crucible_tare, sample_weight, item, sample_humidity)
+        for item1, item2, item3 in zip(weight_after_calcination, crucible_tare, sample_weight):
+            result = fixedMineralWaste (item2, item3, item1, sample_humidity)
             data_set.append(result)
 
         clearScreen()
@@ -110,7 +109,6 @@ def wheatFlourMenu ():
         ## Getting constants ##
         convertion_factor = getFloat ('Enter the convertion factor of the food source: ')
         sample_humidity = getFloat ('Enter the sample humidity: ') 
-        sample_weight = getFloat ('Enter the sample weight: ')
         volume_of_HCl_in_erlenmayer = getFloat ('Enter the volume of HCl in the erlenmayer: ')
         HCl_molarity = getFloat ('Enter the HCl molarity: ')
         HCl_fc = getFloat ('Enter the correction factor of the HCl: ')
@@ -118,11 +116,11 @@ def wheatFlourMenu ():
         NaOH_fc = getFloat ('Enter the correction factor of the NaOH: ')
 
         ## Getting variable ##
-        volume_of_NaOH_spent = getOneSample ('volume of NaOH spent')
+        volume_of_NaOH_spent, sample_weight = getTwoSamples('Volume of NaOH', 'Sample weight')
 
         data_set = []
-        for item in volume_of_NaOH_spent:
-            result = protein(convertion_factor, sample_humidity, sample_weight, volume_of_HCl_in_erlenmayer, HCl_molarity, HCl_fc, item, NaOH_molarity, NaOH_fc)
+        for item1, item2 in zip(volume_of_NaOH_spent, sample_weight):
+            result = protein(convertion_factor, sample_humidity, item2, volume_of_HCl_in_erlenmayer, HCl_molarity, HCl_fc, item1, NaOH_molarity, NaOH_fc)
             data_set.append(result)
 
         clearScreen()
