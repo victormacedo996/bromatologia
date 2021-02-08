@@ -157,6 +157,48 @@ def getTwoSamples (first_question_to_ask, second_question_to_ask):
         i += 1
     return question1_set, question2_set
 
+def getThreeSamples (first_question_to_ask, second_question_to_ask, third_question_to_ask):
+    """
+    This function return two lists with the users input for each question
+    usage: x, y, z = getThreeSamples = ('question1', 'question2', 'question3')
+    """
+    i = 1 ## Counting variable
+    answer = 'y'
+    question1_set = []
+    question2_set = []
+    question3_set = []
+    while True:
+    # Loop while to get the variables of the samples
+    
+        if i == 1: ## Condition to print the right ordinal number
+            r = f"{i}st"
+        elif i == 2:
+            r = f"{i}nd"
+        elif i == 3:
+            r = f"{i}rd"
+        else:
+            r = f"{i}th"
+
+        question1 = getFloat(f"Enter {r} {first_question_to_ask}: ")
+        question2 = getFloat(f"Enter {r} {second_question_to_ask}: ")
+        question3 = getFloat(f"Enter {r} {third_question_to_ask}: ")
+        question1_set.append(question1)
+        question2_set.append(question2)
+        question3_set.append(question3)
+        answer = getAnswer ('Add another sample? (Y/N): ')
+
+        if len(question1_set) < 3 and answer != 'y':
+            answer = 'y'
+            print('You must enter at least 3 samples')
+        elif answer != 'y':
+            break
+        else:
+            if len(question1_set) == 10:
+                break
+            else:
+                pass
+        i += 1
+    return question1_set, question2_set, question3_set
 
 def clearScreen():
     """
